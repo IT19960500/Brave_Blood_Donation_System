@@ -36,7 +36,7 @@
 				<!-- logo -->
 				<div class="col-md-4 col-12 ">
 					<div class="logo" >
-						<img alt="logo" src="./images/logo.png" style="width: 60px; height: 60px; background: white">
+						<img alt="logo" src="./images/logo.jpg" style="width: 100px; height: 100px">
 					</div>
 				</div>	
 					
