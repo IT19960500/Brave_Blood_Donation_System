@@ -35,7 +35,7 @@
 				
 				<!-- logo -->
 				<div class="col-md-4 col-12 ">
-					<div class="logo" >
+					<div class="bravelogo" >
 						<img alt="logo" src="./images/logo.jpg" style="width: 100px; height: 100px">
 					</div>
 				</div>	
