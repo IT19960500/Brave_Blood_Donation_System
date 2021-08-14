@@ -18,25 +18,56 @@
     
     <!-- css -->
 	<link rel="stylesheet" href="css/style.css" type="text/css"/>
+	<link rel="stylesheet" href="css/headerStyle.css" type="text/css"/>
 	
 </head>
 <body>
 
-	<h1>Home page</h1>
+	<!-- include header -->
+	<header>
+	
+		
+		<div class="container">
+
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-12">
+                    
+				
+				<!-- logo -->
+				<div class="col-md-4 col-12 ">
+					<div class="logo" >
+						<img alt="logo" src="./images/logo.png" style="width: 60px; height: 60px; background: white">
+					</div>
+				</div>	
+					
+                </div>
+
+                <div class="col-md-4 col-12 text-center">
+                    <h2 class="my-md-3  site-titel text-white">Brave Blood Donor</h2>
+                </div>
+
+                <div class="col-md-4 col-12 text-right">
+                    <p class="my-md-4 header-link">
+                        <a href="#" class="px-2" data-toggle="modal" data-target="#profile-model"> <span> <i class="fas fa-user-circle"></i> </span>   </a>
+                        <a href="logout.jsp" class="px-1"> <span><i class="fas fa-sign-out-alt"></i></span> Logout !</a>
+                    </p>
+                </div>
+
+            </div>
+
+        </div> <!--/contaner-->
+	
+	
+	</header>
 	
 	
 	
 	
 	
+	<footer>
 	
 	
-	
-	
-	
-	
-	
-	
-	
+	</footer>
 	
 	
 	
