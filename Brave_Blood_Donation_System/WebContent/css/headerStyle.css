@@ -76,3 +76,13 @@ header .site-titel{
     padding-bottom: 5px;
     
 }
+
+
+.logo-background{
+	
+	clip-path: circle(50% at 50% 50%);
+}
+
+.logo-background-color{
+	background-color: white;
+}
