@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 
-	<title>admin panel</title>
+	<title>Admin Panel</title>
 	
 	<!-- boostrap cdn -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -30,14 +30,11 @@
 	<div class="container" style="max-width: 5000px">
 		
 		<div class="tab adminTab">
-		  <button class="tablinks" onclick="openCity(event, 'userManagment')" id="defaultOpen">User Management</button>
+		  <button class="tablinks" onclick="openCity(event, 'userManagment')">User Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'appintmentManagement')">Appointment Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'donationCampManagement')">Donation Camp Management</button>
-		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')">Notice Management</button>
+		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')"id="defaultOpen" >Notice Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'contactUsManagement')">ContactUs Management </button>
-
-				
-		
 		</div>
 		
 		
@@ -104,6 +101,7 @@
 				
 					<!-- include notice managemet admin page -->
  					<%@ include file = "noticeManagementAdmin.jsp" %>
+ 					
 										
 			</div>
 		  
