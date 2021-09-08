@@ -30,10 +30,10 @@
 	<div class="container" style="max-width: 5000px">
 		
 		<div class="tab adminTab">
-		  <button class="tablinks" onclick="openCity(event, 'userManagment')" id="defaultOpen">User Management</button>
+		  <button class="tablinks" onclick="openCity(event, 'userManagment')" >User Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'appintmentManagement')">Appointment Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'donationCampManagement')">Donation Camp Management</button>
-		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')">Notice Management</button>
+		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')"id="defaultOpen">Notice Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'contactUsManagement')">ContactUs Management </button>
 
 				
@@ -108,17 +108,13 @@
 		<!-- Notice Camp management -->
 		<div id="noticeManagement" class="tabcontent border-light">
 		
-			<div class="container mt-3">
-				
-			<button type="button" class="btn btn-primary" id="btnExport"  > <span><i class="fas fa-print"></i> </span>  Generate Report</button>
-										
-			</div>
+			
 		  
 		  	<div class="container mt-3"> 
 		 
-		 		<p>notice management eka methana gahanna</p>
-		 		<p>ergergthrhtyetyjhtedyjhtjtyjtujr</p>
-					
+		 		
+					<!-- include notice managemet admin page -->
+ 					<%@ include file = "noticeManagementAdmin.jsp" %>
 		  	</div>
 						
 		</div>
@@ -129,15 +125,12 @@
 		<!-- ContactUsp management -->
 		<div id="contactUsManagement" class="tabcontent border-light">
 		
-			<div class="container mt-3">
-				
-			<button type="button" class="btn btn-primary" id="btnExport"  > <span><i class="fas fa-print"></i> </span>  Generate Report</button>
-										
-			</div>
+			
 		  
 		  	<div class="container mt-3"> 
 		 
-		 		<p>conntact us managemenet eka methana gahanna</p>
+		 		<!-- include contactUs managemet admin page -->
+ 					<%@ include file = "contactUsManagementAdmin.jsp" %>
 					
 		  	</div>
 						
