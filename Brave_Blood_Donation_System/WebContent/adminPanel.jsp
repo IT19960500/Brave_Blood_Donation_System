@@ -44,16 +44,11 @@
 		<!-- user management -->
 		<div id="userManagment" class="tabcontent border-light">
 		
-			<div class="container mt-3">
-				
-			<button type="button" class="btn btn-primary" id="btnExport"  > <span><i class="fas fa-print"></i> </span>  Generate Report</button>
-										
-			</div>
-		  
+					  
 		  	<div class="container mt-3"> 
 		 
-		 		<p>user management eka methana gahanna</p>
-		 		<p>malki's part</p>
+		 			<!-- include user managemet admin page -->
+ 					<%@ include file = "userManagementAdmin.jsp" %>
 					
 		  	</div>
 			
@@ -71,15 +66,11 @@
 		
 			<div class="container mt-3">
 				
-			<button type="button" class="btn btn-primary" id="btnExport"  > <span><i class="fas fa-print"></i> </span>  Generate Report</button>
+					<!-- include appointmnet managemet admin page -->
+ 					<%@ include file = "appointmentManagementAdmin.jsp" %>
 										
 			</div>
 		  
-		  	<div class="container mt-3"> 
-		 
-		 		<p>appoinmnet management eka methana gahanna</p>
-					
-		  	</div>
 						
 		</div>
 		<!-- //appointment management -->
@@ -91,7 +82,12 @@
 		
 			<div class="container mt-3">
 				
-			<button type="button" class="btn btn-primary" id="btnExport"  > <span><i class="fas fa-print"></i> </span>  Generate Report</button>
+					<div class="container mt-3">
+				
+					<!-- include appointmnet managemet admin page -->
+ 					<%@ include file = "donationCampManagementAdmin.jsp" %>
+										
+			</div>
 										
 			</div>
 		  
@@ -111,15 +107,12 @@
 		
 			<div class="container mt-3">
 				
-			<button type="button" class="btn btn-primary" id="btnExport"  > <span><i class="fas fa-print"></i> </span>  Generate Report</button>
+					<!-- include notice managemet admin page -->
+ 					<%@ include file = "noticeManagementAdmin.jsp" %>
 										
 			</div>
 		  
-		  	<div class="container mt-3"> 
-		 
-		 		<p>notice management eka methana gahanna</p>
-					
-		  	</div>
+	
 						
 		</div>
 		<!-- //Notice Camp management-->
@@ -130,16 +123,12 @@
 		<div id="contactUsManagement" class="tabcontent border-light">
 		
 			<div class="container mt-3">
-				
-			<button type="button" class="btn btn-primary" id="btnExport"  > <span><i class="fas fa-print"></i> </span>  Generate Report</button>
+			
+			<!-- include contactUs managemet admin page -->
+ 					<%@ include file = "contactUsManagementAdmin.jsp" %>
 										
 			</div>
-		  
-		  	<div class="container mt-3"> 
-		 
-		 		<p>conntact us managemenet eka methana gahanna</p>
-					
-		  	</div>
+		
 						
 		</div>
 		<!-- //ContactUs management-->

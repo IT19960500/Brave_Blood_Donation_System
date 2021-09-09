@@ -8,7 +8,7 @@ public class connectionProvider {
 	
 	private static String url = "jdbc:mysql://localhost:3306/brave_blood_donation_db?autoReconnect=true&useSSL=false";
 	private static String userName = "root";
-	private static String password = "11225";
+	private static String password = "Malki#22";
 	private static Connection con;
 	
 	public static Connection getConnection() {
