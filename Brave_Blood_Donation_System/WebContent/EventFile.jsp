@@ -3,7 +3,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.braveBloodDonation.entities.Event"%>
-<%@page import="com.braveBloodDonation.dao.EventDao"%>
+<%@page import="com.braveBloodDonation.dao.EventDao"%> 
 <!DOCTYPE html>
 <html>
 <head>
