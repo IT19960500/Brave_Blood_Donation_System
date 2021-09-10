@@ -262,6 +262,12 @@ $(document).ready(function (e) {
 			  confirmButtonText: 'Yes, update it!'
 			}).then((result) => {
 				
+
+			<button type="button" class="btn btn-primary" id="btnExport"  > <span><i class="fas fa-print"></i> </span>  Generate Report</button>
+										
+			</div>
+			
+
 			  if (result.isConfirmed) {
 		
 					$.ajax({
@@ -309,6 +315,7 @@ $(document).ready(function (e) {
 
 
 </script>
+
 
 
 

@@ -103,7 +103,12 @@
  					<%@ include file = "donationCampManagementAdmin.jsp" %>
 	
 		  
-		
+		  	<div class="container mt-3"> 
+		 
+		 		<p>donation camp management eka methana gahanna</p>
+					
+		  	</div>
+						
 		</div>
 		<!-- //Donation Camp management-->
 
