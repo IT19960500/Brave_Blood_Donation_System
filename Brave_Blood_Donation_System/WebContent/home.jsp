@@ -1,3 +1,4 @@
+
 <%@page import="com.braveBloodDonation.entities.User"%>
 <%@page import="com.braveBloodDonation.entities.Message"%>
 <%@page import="java.util.ArrayList"%>;
@@ -11,6 +12,17 @@
     
     %>
     
+
+<%@page import="com.braveBloodDonation.dao.donationCampManagemetDButill"%>
+<%@page import="com.braveBloodDonation.entities.campCategory"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.braveBloodDonation.entities.News"%>
+<%@page import="com.braveBloodDonation.dao.NewsDao"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +42,7 @@
     <!-- css -->
 	<link rel="stylesheet" href="css/style.css" type="text/css"/>
 	<link rel="stylesheet" href="css/headerStyle.css" type="text/css"/>
-	
+
 </head>
 <body>
 
@@ -41,7 +53,7 @@
 		<div class="container">
 
             <div class="row">
-                <div class="col-md-4 col-sm-12 col-12">
+                <div class="col-md-4 col-sm-12 col-12" style="height: 150px;">
                     
 					
 					<!-- logo -->
@@ -65,13 +77,15 @@
                 </div>
 
             </div>
-
+<%@ include file="navBar.jsp" %>
         </div> <!--/contaner-->
 	
 	
 	</header>
 	
+
 	
+
 	<!-- Profile Modal -->
 	
 	
@@ -302,18 +316,41 @@
 			
 				
 <!-- /Profile Modal -->	
+
+
+	<!-- include navbar -->
+	<div class="container">
 	
+		<%@ include file = "navBar.jsp"  %>
+
 	
+
+
+	</div>
+
+
+	<!-- include organizeDonationCampModal -->
+	<div class="container">
+
+		<%@ include file = "organizeDonationCampModal.jsp"  %>
+	
+	</div>
+	
+
+	
+
+
+
+
 	<footer>
-	
+	<%@ include file="footer.jsp" %>
 	
 	</footer>
 	
 	
 	
 	
-	
-	
+
 	
 	
 	
@@ -335,6 +372,14 @@
 	<script type="text/javascript" src="js/profileScript.js"></script>
 	
 		
+	
+	<!-- when click the book log icon show the modal -->
+	<script>
+	    $('.blmodal').on('click', function(e){
+	      e.preventDefault();
+	      $('#organizeDonationCamp').modal('show');
+	    });
+  	</script>
 	
 </body>
 </html>

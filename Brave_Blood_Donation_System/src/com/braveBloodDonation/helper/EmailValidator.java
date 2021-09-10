@@ -8,6 +8,11 @@ public class EmailValidator {
 
 	 //private static Matcher matcher;
 
+public class EmailValidator {
+
+	  //private static Matcher matcher;
+
+
 	  private static  Pattern p = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
 	  public  static boolean validateEmail(String hex){
@@ -32,5 +37,6 @@ public class EmailValidator {
 
 		  return isSuccess;
 	  }
+
 
 }
