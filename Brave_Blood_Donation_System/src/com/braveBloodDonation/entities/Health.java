@@ -73,7 +73,7 @@ public class Health {
 
 	public void setHealthArticle(String healthArticle) {
 		this.healthArticle = healthArticle;
-	}
+	} 
 	
 	
 }
