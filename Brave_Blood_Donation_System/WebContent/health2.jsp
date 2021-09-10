@@ -12,7 +12,7 @@
 
 	<!-- css -->
 	<link rel="stylesheet" href="css/style.css" type="text/css"/>
-		<link rel="stylesheet" href="css/admincss.css" type="text/css"/>
+	<link rel="stylesheet" href="css/admincss.css" type="text/css"/>
 	
 	
 	<!-- font awasome icon -->
