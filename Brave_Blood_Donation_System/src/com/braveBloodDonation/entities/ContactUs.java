@@ -69,7 +69,7 @@ public class ContactUs {
 		return contactUsEmail;
 	}
 
-	public void setContactUsEmail(String contactUsEmail) {
+	public void setContactUsEmail(String contactUsEmail) { 
 		this.contactUsEmail = contactUsEmail;
 	}
 
