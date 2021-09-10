@@ -3,6 +3,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.braveBloodDonation.entities.News"%>
+<%@page import="com.braveBloodDonation.dao.NewsDao"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +26,7 @@
     <!-- css -->
 	<link rel="stylesheet" href="css/style.css" type="text/css"/>
 	<link rel="stylesheet" href="css/headerStyle.css" type="text/css"/>
-	
+
 </head>
 <body>
 
@@ -57,13 +61,15 @@
                 </div>
 
             </div>
-
+<%@ include file="navBar.jsp" %>
         </div> <!--/contaner-->
 	
 	
 	</header>
 	
+
 	
+
 	<!-- include navbar -->
 	<div class="container">
 	
@@ -81,8 +87,12 @@
 	
 
 	
+
+
+
+
 	<footer>
-	
+	<%@ include file="footer.jsp" %>
 	
 	</footer>
 	
