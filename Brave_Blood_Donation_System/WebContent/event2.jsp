@@ -22,7 +22,7 @@
     <script src="https://kit.fontawesome.com/2a0f6dfc30.js" crossorigin="anonymous"></script>
     
  	<!-- date and time picker css -->
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 	
 </head>
 <body>
