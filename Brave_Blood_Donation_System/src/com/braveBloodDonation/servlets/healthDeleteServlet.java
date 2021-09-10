@@ -26,7 +26,7 @@ public class healthDeleteServlet extends HttpServlet {
 		boolean isTrue= HealthDao.deleteHealth(healthID);
 		PrintWriter out=response.getWriter();
 		if(isTrue==true) {
-			
+			 
 			out.print("done");
 		}else {
 			
