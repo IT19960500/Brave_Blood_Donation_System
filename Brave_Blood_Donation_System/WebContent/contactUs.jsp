@@ -12,17 +12,17 @@
 
 	<!-- css -->
 	<link rel="stylesheet" href="css/style.css" type="text/css"/>
-		<link rel="stylesheet" href="css/admincss.css" type="text/css"/>
+	<link rel="stylesheet" href="css/admincss.css" type="text/css"/> 
 	
 	
 	<!-- font awasome icon -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<!--font awesom CDN-->
-    <script src="https://kit.fontawesome.com/2a0f6dfc30.js" crossorigin="anonymous"></script>
+    	<script src="https://kit.fontawesome.com/2a0f6dfc30.js" crossorigin="anonymous"></script>
     
  	<!-- date and time picker css -->
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    	<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 	
 </head>
 <body>
