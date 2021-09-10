@@ -1,6 +1,3 @@
-<%@page import="com.braveBloodDonation.dao.donationCampManagemetDButill"%>
-<%@page import="com.braveBloodDonation.entities.campCategory"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.ArrayList"%>
@@ -37,7 +34,7 @@
 		<div class="container">
 
             <div class="row">
-                <div class="col-md-4 col-sm-12 col-12" style="height: 150px;">
+                <div class="col-md-4 col-sm-12 col-12">
                     
 				
 				<!-- logo -->
@@ -67,29 +64,60 @@
 	
 	</header>
 	
-
+	 <h1 style="color:red;font-family:Helvetica, sans-serif; font-size: 100px;">NEWS</h1>
+ <div class="sticky-top" style="float:right;">
+ <div class="card" style="width:15rem; height: 15rem;text-align:center;">
+      <div class="card-body">
+        <h5 class="card-title" style="color:red;">Want to Become a Blood Donor?</h5>
+        <p class="card-text">Join With Us Today!</p>
+        <a href="#" class="btn btn-info">Register</a>
+      </div>
+    </div>
+    </div>
+	<div class="container table-area">
+		  	
+			  	<table  id="newsTable">
+					  <tbody >
+					  
+					  <%
+					  	ArrayList<News> news = NewsDao.getAllNews();
+					  	
+					  	for(News news1:news){
+					  	
+					  		%>
+					  		
+							    <tr style="font-weight: bold;">
+							    	<td>
+							    		<div class="card mb-3" style="max-width: 850px;">
+  											<div class="row g-0">
+    											<div class="col-md-4">
+      												<img style="height:17vw; object-fit:cover;" src="images/<%= news1.getNewsPhoto() %>" 
+      												alt="Card image cap" class="img-fluid rounded-start" alt="...">
+    											</div>
+    									<div class="col-md-8">
+      										<div class="card-body">
+						        				<h5 class="card-title"style="color:red; text-decoration:underline;">
+						        				<%= news1.getNewsHeading() %></h5>
+        										<p class="card-text"><%= news1.getNewsDescription() %></p>
+       											<a href="ReadNews.jsp?newsId=<%= news1.getNewsId() %>" class="btn btn-danger">Read</a>
+      										</div>
+    									</div>
+  											</div>
+										</div>
+									</td>				     
+							    </tr>
+					  		
+					  		
+					  		<%
+					  	}
+					  %>
+					  
+					
+					  </tbody>
+				</table>
+		  	
+		  	</div>
 	
-
-	<!-- include navbar -->
-	<div class="container">
-	
-		<%@ include file = "navBar.jsp"  %>
-	
-
-
-	</div>
-
-
-	<!-- include organizeDonationCampModal -->
-	<div class="container">
-
-		<%@ include file = "organizeDonationCampModal.jsp"  %>
-	
-	</div>
-	
-
-	
-
 
 
 
@@ -101,7 +129,8 @@
 	
 	
 	
-
+	
+	
 	
 	
 	
@@ -122,14 +151,6 @@
 	<script type="text/javascript" src="js/editdata.js"></script>
 	
 	
-	
-	<!-- when click the book log icon show the modal -->
-	<script>
-	    $('.blmodal').on('click', function(e){
-	      e.preventDefault();
-	      $('#organizeDonationCamp').modal('show');
-	    });
-  	</script>
 	
 </body>
 </html>

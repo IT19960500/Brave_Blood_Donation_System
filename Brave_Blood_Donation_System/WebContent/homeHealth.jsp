@@ -1,12 +1,9 @@
-<%@page import="com.braveBloodDonation.dao.donationCampManagemetDButill"%>
-<%@page import="com.braveBloodDonation.entities.campCategory"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="com.braveBloodDonation.entities.News"%>
-<%@page import="com.braveBloodDonation.dao.NewsDao"%>
+<%@page import="com.braveBloodDonation.entities.Health"%>
+<%@page import="com.braveBloodDonation.dao.HealthDao"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +34,7 @@
 		<div class="container">
 
             <div class="row">
-                <div class="col-md-4 col-sm-12 col-12" style="height: 150px;">
+                <div class="col-md-4 col-sm-12 col-12">
                     
 				
 				<!-- logo -->
@@ -67,29 +64,60 @@
 	
 	</header>
 	
-
-	
-
-	<!-- include navbar -->
-	<div class="container">
-	
-		<%@ include file = "navBar.jsp"  %>
-	
-
-
-	</div>
-
-
-	<!-- include organizeDonationCampModal -->
-	<div class="container">
-
-		<%@ include file = "organizeDonationCampModal.jsp"  %>
-	
-	</div>
-	
-
-	
-
+<h1 style="color:red;font-family:Helvetica, sans-serif; font-size: 100px;">HEALTH</h1>
+	 
+ <div class="sticky-top" style="float:right;">
+ <div class="card" style="width:15rem; height: 15rem;text-align:center;">
+      <div class="card-body">
+        <h5 class="card-title" style="color:red;">Want to Become a Blood Donor?</h5>
+        <p class="card-text">Join With Us Today!</p>
+        <a href="#" class="btn btn-info">Register</a>
+      </div>
+    </div>
+    </div>
+<div class="container table-area">
+		  	
+			  	<table  id="healthTable">
+					  
+					  <tbody>
+					  
+					  <%
+					  	ArrayList<Health> health = HealthDao.getAllHealth();
+					  	
+					  	for(Health health1:health){
+					  	
+					  		%>
+					  		<tr style="font-weight: bold;">
+					  			<td>
+					  			<div class="card mb-3" style="max-width: 850px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img style="height:17vw; object-fit:cover;" src="images/<%= health1.getHealthPhoto() %>" alt="Card image cap" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"style="color:red; text-decoration:underline;"><%= health1.getHealthHeading()  %></h5>
+        <p class="card-text"><%= health1.getHealthDescription() %></p>
+       <a href="ReadHealth.jsp?healthId=<%= health1.getHealthId() %>" class="btn btn-danger">Read</a>
+      </div>
+    </div>
+  </div>
+</div>
+					 		
+				</td>
+				</tr>	  		
+							   
+					  		
+					  		<%
+					  	}
+					  %>
+					  
+					
+					  </tbody>
+				</table>
+		  	
+		  	</div>
+		  	
 
 
 
@@ -101,7 +129,8 @@
 	
 	
 	
-
+	
+	
 	
 	
 	
@@ -122,14 +151,6 @@
 	<script type="text/javascript" src="js/editdata.js"></script>
 	
 	
-	
-	<!-- when click the book log icon show the modal -->
-	<script>
-	    $('.blmodal').on('click', function(e){
-	      e.preventDefault();
-	      $('#organizeDonationCamp').modal('show');
-	    });
-  	</script>
 	
 </body>
 </html>

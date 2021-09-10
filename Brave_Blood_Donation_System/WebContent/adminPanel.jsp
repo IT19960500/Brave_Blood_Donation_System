@@ -30,6 +30,12 @@
 	<div class="container" style="max-width: 5000px">
 		
 		<div class="tab adminTab">
+
+		  <button class="tablinks" onclick="openCity(event, 'userManagment')" >User Management</button>
+		  <button class="tablinks" onclick="openCity(event, 'appintmentManagement')">Appointment Management</button>
+		  <button class="tablinks" onclick="openCity(event, 'donationCampManagement')">Donation Camp Management</button>
+		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')"id="defaultOpen">Notice Management</button>
+
 		  <button class="tablinks" onclick="openCity(event, 'userManagment')">User Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'appintmentManagement')">Appointment Management</button>
 
@@ -105,7 +111,16 @@
 
 		<!-- Notice Camp management -->
 		<div id="noticeManagement" class="tabcontent border-light">
-		
+
+			
+		  
+		  	<div class="container mt-3"> 
+		 
+		 		
+					<!-- include notice managemet admin page -->
+ 					<%@ include file = "noticeManagementAdmin.jsp" %>
+		  	</div>
+
 			<div class="container mt-3">
 				
 					<!-- include notice managemet admin page -->
@@ -115,6 +130,7 @@
 			</div>
 		  
 	
+
 						
 		</div>
 		<!-- //Notice Camp management-->
@@ -123,7 +139,16 @@
 
 		<!-- ContactUsp management -->
 		<div id="contactUsManagement" class="tabcontent border-light">
-		
+
+			
+		  
+		  	<div class="container mt-3"> 
+		 
+		 		<!-- include contactUs managemet admin page -->
+ 					<%@ include file = "contactUsManagementAdmin.jsp" %>
+					
+		  	</div>
+
 			<div class="container mt-3">
 			
 			<!-- include contactUs managemet admin page -->
@@ -131,6 +156,7 @@
 										
 			</div>
 		
+
 						
 		</div>
 		<!-- //ContactUs management-->
