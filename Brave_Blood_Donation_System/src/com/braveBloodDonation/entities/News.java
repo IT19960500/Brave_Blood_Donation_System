@@ -40,7 +40,6 @@ public class News {
 
 
 
-
 	public int getNewsId() {
 		return newsId;
 	}
