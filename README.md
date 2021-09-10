@@ -1,6 +1,6 @@
-#Group ID :2021S1_JUNE_WD_10
-##Project Name :Brave Blood Donor System
-##Group Details
+# Group ID :2021S1_JUNE_WD_10
+## Project Name :Brave Blood Donor System
+## Group Details
 
 **Member Details :**
 | Name | Student ID | User Name | Branch Name |
@@ -10,7 +10,7 @@
 | Bhashitha W.P.K.K | IT19960500 | IT19960500 | IT19960500-Bhashitha-W.P.K.K |
 |Athukorala A.D.M.P | IT19015804  | IT19015804 | IT19015804-Athukorala-A.D.M.P |
 
-##Project Description : 
+## Project Description : 
 As the 3rd year 2nd semester project, we are going to develop an online blood donation system which is a web-based application. Through this online blood donation system, the users can donate their blood, organize blood camps, make appointments to donate blood and aware about the notices that helpful to their lives. There are four main functions in this system, namely,
 
 1.	User Management: In this function, the user can register for the system if they are a new user, but if the user is already a user, then they can login to the system and make their scheduling, appointments and do the other work related to the subject.  
@@ -22,7 +22,7 @@ As the 3rd year 2nd semester project, we are going to develop an online blood do
 4.	Notices and contact us Management: This function is available for both registered and non-registered users. By visiting for the site, they can read the articles in the notice page and if they have any doubts about the system and other questions related to the subject, they can ask them by using the contact us forum.
 
 
-##Technologies :
+## Technologies :
 JAVA
 JSP
 JQUERY
