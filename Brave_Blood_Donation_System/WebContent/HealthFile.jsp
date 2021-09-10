@@ -4,7 +4,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.braveBloodDonation.entities.Health"%>
 <%@page import="com.braveBloodDonation.dao.HealthDao"%>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
 <meta charset="ISO-8859-1">
