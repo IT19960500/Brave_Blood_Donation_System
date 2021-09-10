@@ -21,7 +21,7 @@
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Author ID</span>
   <input type="text" class="form-control" name="healthAuthorID"   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
   <div class="invalid-tooltip">
-        Please provide the Author ID.
+        Please provide the Author ID. 
       </div>
 </div>
 <div class="input-group mb-3">
