@@ -1,0 +1,55 @@
+
+.donationTab {
+	margin-top: 5px;
+	margin-left: -6px;
+}
+
+/* Style tab links */
+.donationTab .nav-item {
+  cursor: pointer;
+  font-size: 20px;
+  color: #bb372d;
+}
+
+#nav-tab .active{
+	background: #f2f2f2;
+	color: #f00c0c;
+}
+
+.donationTabContent{
+	margin-left: -6px;
+	background: #f2f2f2;
+	
+}
+
+.donationTabContent .btn-area{
+	background: white;
+	transform: translateY(13px);
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 10px;
+}
+
+.donationTabContent .table-area{
+	background: white;
+	margin-top: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

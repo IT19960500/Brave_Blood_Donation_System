@@ -1,3 +1,6 @@
+<%@page import="com.braveBloodDonation.dao.donationCampManagemetDButill"%>
+<%@page import="com.braveBloodDonation.entities.campCategory"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.ArrayList"%>
@@ -34,7 +37,7 @@
 		<div class="container">
 
             <div class="row">
-                <div class="col-md-4 col-sm-12 col-12">
+                <div class="col-md-4 col-sm-12 col-12" style="height: 150px;">
                     
 				
 				<!-- logo -->
@@ -67,6 +70,26 @@
 
 	
 
+	<!-- include navbar -->
+	<div class="container">
+	
+		<%@ include file = "navBar.jsp"  %>
+	
+	</div>
+
+
+	<!-- include organizeDonationCampModal -->
+	<div class="container">
+
+		<%@ include file = "organizeDonationCampModal.jsp"  %>
+	
+	</div>
+	
+
+	
+
+
+
 
 	<footer>
 	<%@ include file="footer.jsp" %>
@@ -98,6 +121,14 @@
 	<script type="text/javascript" src="js/editdata.js"></script>
 	
 	
+	
+	<!-- when click the book log icon show the modal -->
+	<script>
+	    $('.blmodal').on('click', function(e){
+	      e.preventDefault();
+	      $('#organizeDonationCamp').modal('show');
+	    });
+  	</script>
 	
 </body>
 </html>
