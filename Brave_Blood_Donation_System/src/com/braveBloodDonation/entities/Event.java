@@ -82,7 +82,7 @@ public class Event {
 	}
 
 	public void setEventArticle(String eventArticle) {
-		this.eventArticle = eventArticle;
+		this.eventArticle = eventArticle; 
 	}
 	
 	
