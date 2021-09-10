@@ -36,7 +36,7 @@ public class UpdateNewsServlet extends HttpServlet {
 				Part part = request.getPart("newsPhoto"); 
 				System.out.println(newsHeading);
 				
-		
+		 
 				PrintWriter out = response.getWriter();
 				String fileName = part.getSubmittedFileName();
 				
