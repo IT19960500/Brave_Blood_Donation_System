@@ -16,7 +16,7 @@
 <!-- font awasome icon -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
-	<!--font awesom CDN-->
+	<!--font awesom CDN--> 
     <script src="https://kit.fontawesome.com/2a0f6dfc30.js" crossorigin="anonymous"></script>
     
     <!-- css -->
