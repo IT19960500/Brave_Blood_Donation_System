@@ -5,9 +5,9 @@
 **Member Details :**
 | Name | Student ID | User Name | Branch Name |
 |--|--|--|--|
-| Yashodara P.H.E | IT19952062 | IT19952062 | IT19952062-Yashodara-P.H.E |
+| Yashodara P.H.E | IT19952062 | IT19952062/Asus | IT19952062-Yashodara-P.H.E |
 | Ranepura R.S | IT19951522 | IT19951522 | IT19951522-Ranepura-R.S |
-| Bhashitha W.P.K.K | IT19960500 | IT19960500 | IT19960500-Bhashitha-W.P.K.K |
+| Bhashitha W.P.K.K | IT19960500 | IT19960500/kanakabhashitha | IT19960500-Bhashitha-W.P.K.K |
 |Athukorala A.D.M.P | IT19015804  | IT19015804 | IT19015804-Athukorala-A.D.M.P |
 
 ## Project Description : 
