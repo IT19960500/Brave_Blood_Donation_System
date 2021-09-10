@@ -1,5 +1,5 @@
-# Group ID :2021S1_JUNE_WD_10
-## Project Name :Brave Blood Donor System
+# Group ID : 2021S1_JUNE_WD_10
+## Project Name : Brave Blood Donor System
 ## Group Details
 
 **Member Details :**
