@@ -15,7 +15,7 @@
 
 
 <h1 style="color:red;font-family:Helvetica, sans-serif; font-size: 100px;">NEWS ARTICLES</h1>
-
+ 
 <br>
 <h4>New News Articles</h4>
 <form  class="border border-secondary needs-validation" novalidate action="AddNewsArticleServlet" method="post" enctype="multipart/form-data">
