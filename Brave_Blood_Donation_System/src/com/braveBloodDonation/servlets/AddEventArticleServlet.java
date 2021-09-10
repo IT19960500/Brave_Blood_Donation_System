@@ -28,7 +28,7 @@ public class AddEventArticleServlet extends HttpServlet {
 		String eventDescription=request.getParameter("eventDescription");
 		String eventArticle=request.getParameter("eventArticle");
 		Part part = request.getPart("eventPhoto"); 
-		
+		 
 		System.out.println(eventHeading);
 
 		PrintWriter out = response.getWriter();
