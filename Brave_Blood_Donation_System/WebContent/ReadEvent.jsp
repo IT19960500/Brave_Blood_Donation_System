@@ -5,7 +5,7 @@
 <%@page import="com.braveBloodDonation.dao.EventDao"%>
 <% 
 int eventId= Integer.parseInt(request.getParameter("eventId"));
-Event event=EventDao.getEventDetailsById(eventId);
+Event event=EventDao.getEventDetailsById(eventId); 
 %>
 
 <!DOCTYPE html>
