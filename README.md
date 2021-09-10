@@ -23,10 +23,4 @@ As the 3rd year 2nd semester project, we are going to develop an online blood do
 
 
 ## Technologies :
-JAVA
-JSP
-JQUERY
-MYSQL
-CSS
-BOOTSTRAP
-Apache TOMCAT Server
+JAVA ,JSP , JQUERY , MYSQL , CSS , BOOTSTRAP , Apache TOMCAT Server
