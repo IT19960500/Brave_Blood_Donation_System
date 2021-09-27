@@ -38,6 +38,19 @@
 
 		  <button class="tablinks" onclick="openCity(event, 'userManagment')">User Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'appintmentManagement')">Appointment Management</button>
+
+		  <button class="tablinks" onclick="openCity(event, 'donationCampManagement')">Donation Camp Management
+		  	<span class="ml-1"> <i class="far fa-bell fa-2x"></i> </span> 
+		  	<span style=" position: absolute; border-radius: 50%; background: white;color: red; padding: 2px 5px; margin-left: -9px">
+		  	<% 
+		  		ArrayList<organizeDonationCamp> org = donationCampManagemetDButill.getAllConfirmCampDetails();
+		  		out.print(org.size());
+		  	%>
+		  	</span>
+		  
+		  </button>
+		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')">Notice Management</button>
+
 		  <button class="tablinks" onclick="openCity(event, 'donationCampManagement')">Donation Camp Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')"id="defaultOpen" >Notice Management</button>
 
@@ -84,16 +97,11 @@
 		<!-- Donation Camp management -->
 		<div id="donationCampManagement" class="tabcontent border-light">
 		
-			<div class="container mt-3">
-				
-					<div class="container mt-3">
+		
 				
 					<!-- include appointmnet managemet admin page -->
  					<%@ include file = "donationCampManagementAdmin.jsp" %>
-										
-			</div>
-										
-			</div>
+	
 		  
 		
 		</div>
