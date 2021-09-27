@@ -45,11 +45,28 @@
       </li>
 
      <li class="nav-item" style="font-weight: bold;">
+
         <a class="nav-link" href="#"><span><i class="fas fa-notes-medical"></i></span> NOTICE</a>
       </li>
 
      <li class="nav-item" style="font-weight: bold;">
         <a class="nav-link" href="#"><span><i class="fas fa-address-book"></i></span> CONTACT</a>
+
+      <div class="dropdown">
+       <a class="nav-link" href="#"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <span><i class="fas fa-notes-medical"></i></span> NOTICE
+       </a>
+  			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			    <a class="nav-link" href="homeNews.jsp">NEWS</a>
+			    <a class="nav-link" href="homeEvent.jsp">EVENT</a>
+			    <a class="nav-link" href="homeHealth.jsp">HEALTH</a>
+  			</div>
+	 </div>
+   </li>
+
+     <li class="nav-item" style="font-weight: bold;">
+        <a class="nav-link" href="addContactUs.jsp"><span><i class="fas fa-address-book"></i></span> CONTACT</a>
+
       </li>
     
   
