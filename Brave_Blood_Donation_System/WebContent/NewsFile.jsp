@@ -5,6 +5,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.braveBloodDonation.entities.News"%>
 <%@page import="com.braveBloodDonation.dao.NewsDao"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,26 +29,35 @@
 <body>
 
 	<h1 style="color:red;font-family:Helvetica, sans-serif; font-size: 100px;">NEWS</h1>
+	<form  action="searchNewsMain.jsp" method="post" >
 		<div class="col-md-6 mb-4">
       		<div class="input-group md-form form-sm form-2 pl-0">
-        		<input class="form-control my-0 py-1 amber-border"style="float:right;"type="text" placeholder="Search" aria-label="Search">
-        			<div class="input-group-append">
-          				<span class="input-group-text amber lighten-3" id="basic-text1" style="margin-right:10px"><i class="fas fa-search text-grey" aria-hidden="true"></i></span>
-           				<a href="addNews.jsp" class="btn btn-danger" style="background: #bb372d;">Add New Article</a>                                                                  
+      		<div class="input-group-append">  
+        		<input class="form-control my-0 py-1 amber-border"style="float:right;"type="search"
+        		placeholder="Search" aria-label="Search" name="searchData" id="searchData" >
+        			
+        			 <Button class="btn btn-success" style="width: 80px; margin-right:10px;">Search</Button>    	
+           				<a href="addNews.jsp" class="btn btn-danger" style="background: #bb372d;">Add New Article</a>  
+           				<a href="adminPanel.jsp" class="btn btn-warning" style="margin-left:10px;width:80px;">Back </a>                                                                  
         			</div>
+        			 	
       		</div>
     	</div>
+    	</form>	
+    
+
+  
 	<br>
-	
 	<div class="container table-area">
 		  	
 			  	<table  id="newsTable">
 					  <tbody >
 					  
 					  <%
-					  	ArrayList<News> news = NewsDao.getAllNews();
 					  	
-					  	for(News news1:news){
+						ArrayList<News> news = NewsDao.getAllNews();
+				 		
+				 		for(News news1:news){
 					  	
 					  		%>
 					  		
@@ -72,8 +82,8 @@
 											data-newsauthorid="<%= news1.getNewsAuthorID() %>"
 											data-newsheading="<%= news1.getNewsHeading() %>"
 											data-newsdescription="<%= news1.getNewsDescription() %>"
-											data-newsarticle="<%= news1.getNewsArticle() %>"
 											data-newsphoto="<%= news1.getNewsPhoto() %>"
+											data-newsarticle="<%= news1.getNewsArticle() %>"
 			
 										 class="btn btn-warning mr-2" type="button" data-toggle="modal" data-target="#newsModal"><i class="fas fa-pen"></i></a>
 										 <a href="#" onclick="getNewsIDDelete(<%= news1.getNewsId() %>)" class="btn btn-danger " type="button" ><i class="far fa-trash-alt"></i></a>
@@ -114,7 +124,8 @@
       </div>
       <div class="modal-body">
       
-        <form id="updateNews" class="border border-secondary needs-validation" novalidate action="UpdateNewsServlet" method="post" enctype="multipart/form-data">
+        <form id="updateNews" class="border border-secondary needs-validation" novalidate 
+        action="UpdateNewsServlet" method="post" enctype="multipart/form-data">
 		<br>
 		<div class="input-group mb-3">
 		  <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;" >Article ID</span>
@@ -133,23 +144,24 @@
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Article Heading</span>
   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" 
-  		name="newsHeading" id="news_heading" value="news_heading"required>
+  		name="newsHeading" id="news_heading" value="news_heading"required="required">
      <div class="invalid-tooltip">
         Please provide the Article Heading.
       </div>
 </div>
 <div class="input-group">
   <span class="input-group-text" style="width:150px;">Description</span>
-  <textarea type="text" class="form-control" aria-label="With textarea"
+  <textarea class="form-control" aria-label="With textarea"
   name="newsDescription" id="news_description" value="news_description" required></textarea>
       <div class="invalid-tooltip">
         Please provide the Article description.
       </div>
 </div>
+<br>
 <div class="input-group">
   <span class="input-group-text" style="width:150px;">Article</span>
-  <textarea type="text" class="form-control" aria-label="With textarea"
-  name="newsArticle" id="news_article" value="news_article" required></textarea>
+  <textarea class="form-control" aria-label="With textarea" 
+  name="newsArticle" id="news_article" value="news_article" required="required"></textarea>
       <div class="invalid-tooltip">
         Please provide the Article.
       </div>
@@ -189,7 +201,7 @@
 <script>
 
 
-//edit camp category
+//Update News category
 
 $(document).on("click", "a[href='#newsDetailsEdit']", function () {
 	
@@ -197,15 +209,17 @@ $(document).on("click", "a[href='#newsDetailsEdit']", function () {
     var newsAuthorId = $(this).data('newsauthorid');
     var newsHeading = $(this).data('newsheading');
     var newsDescription = $(this).data('newsdescription');
+    var newsArticle=$(this).data('newsarticle');
     var newsPhoto = $(this).data('newsphoto');
-    var newsArticle=$(this).data('data-newsarticle');
+   
     
     $(".modal-body #news_id").val( newsId );
     $(".modal-body #news_author_id").val( newsAuthorId );
     $(".modal-body #news_heading").val( newsHeading );
     $(".modal-body #news_description").val( newsDescription);
-    $(".modal-body #news_photo").val( newsPhoto );
     $(".modal-body #news_article").val( newsArticle );
+    $(".modal-body #news_photo").val( newsPhoto );
+   
 	
 	});
 
@@ -213,7 +227,7 @@ $(document).on("click", "a[href='#newsDetailsEdit']", function () {
 
 <script>
 
-//edit camp category
+//Update News category
 
 $(document).ready(function (e) {
 	
@@ -282,7 +296,7 @@ $(document).ready(function (e) {
 	
 });//end main
 
-//end of edit camp category
+//end of update news category
 
 
 </script>

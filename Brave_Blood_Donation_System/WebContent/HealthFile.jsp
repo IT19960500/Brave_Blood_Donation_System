@@ -27,16 +27,19 @@
 
 		
 <h1 style="color:red;font-family:Helvetica, sans-serif; font-size: 100px;">HEALTH ARTICLES</h1>
+<form  action="searchHealthMain.jsp" method="post" >
 		<div class="col-md-6 mb-4">
       		<div class="input-group md-form form-sm form-2 pl-0">
-        		<input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search">
+        		<input class="form-control my-0 py-1 amber-border" type="text"
+        		 placeholder="Search" aria-label="Search" name="searchData" id="searchData">
         			<div class="input-group-append">
-          				<span class="input-group-text amber lighten-3" id="basic-text1"><i class="fas fa-search text-grey" aria-hidden="true"></i></span>
-           				<a href="addHealth.jsp" class="btn btn-danger" style="background: #bb372d;">Add New Article </a>                                                                  
+          				 <Button class="btn btn-success" style="width: 80px; margin-right:10px;">Search</Button>   
+           				<a href="addHealth.jsp" class="btn btn-danger" style="background: #bb372d;">Add New Article </a> 
+           				<a href="adminPanel.jsp" class="btn btn-warning" style="margin-left:10px;width:80px;">Back </a>                                                                   
         			</div>
       		</div>
     	</div>
-	
+</form>	
 
 <div class="container table-area">
 		  	

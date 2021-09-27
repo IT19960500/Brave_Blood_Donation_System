@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.braveBloodDonation.entities.Event;
 import com.braveBloodDonation.helper.connectionProvider;
@@ -227,5 +228,44 @@ public class EventDao {
 			return event;
 		}
 		
-		
+		public static List<Event>getSearchEvent(String eventAuthorID){
+			List<Event> list = new ArrayList<>();
+			try {
+			
+				//get our dbconnection
+				Connection con = connectionProvider.getConnection();
+				
+				//create sql query
+				String sql = "SELECT * FROM event WHERE eventAuthorID LIKE '%"+eventAuthorID+"%'";    
+						
+				//cerate statment
+				java.sql.PreparedStatement stmt = con.prepareStatement(sql);
+
+				
+				//execute the query
+				ResultSet rs = stmt.executeQuery();
+				
+				//get details from db
+				while (rs.next()) {
+					
+					int eventId = rs.getInt("eventId");
+					String eventAuthorID1 = rs.getString("eventAuthorID");
+					String eventHeading=rs.getString("eventHeading");
+					String eventDescription=rs.getString("eventDescription");
+					String eventPhoto=rs.getString("eventPhoto");
+					String eventArticle=rs.getString("eventArticle");
+					
+					//create an object docCategory class
+					Event  event = new Event(eventId,eventAuthorID1,eventHeading,eventDescription,eventPhoto,eventArticle);
+					//set value into arrayList
+					list.add(event);
+				
+				}
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			return list;
+			}
 }
+
