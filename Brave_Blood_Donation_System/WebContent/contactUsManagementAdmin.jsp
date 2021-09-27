@@ -325,6 +325,7 @@ $(document).ready(function (e) {
 
 								  window.location="contactUsMain.jsp"
 
+
 								});
 								
 							}else{
@@ -396,6 +397,7 @@ function getContactUsIDDelete(contactusid) {
 
 											window.location="contactUsMain.jsp"
 
+
 										
 									}else{
 										swal(data);
@@ -443,9 +445,19 @@ $("#btnExport1").on("click", function () {
   }, false);
 })();
 </script>
+
+
+
+
+
+<script>
+
+
+
 <script>
 
 $("#btnExport").on("click", function () {
+
 
 	html2canvas($('#contactUsTable')[0], {
       onrendered: function (canvas) {

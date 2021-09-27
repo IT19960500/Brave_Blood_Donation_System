@@ -3,17 +3,12 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
-<%@page import="com.braveBloodDonation.entities.News"%>
-<%@page import="com.braveBloodDonation.dao.NewsDao"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<title>Camp Schedule</title>
 
-	<title>Brave Blood Donation</title>
-	
 	<!-- boostrap cdn -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
@@ -26,9 +21,16 @@
     <!-- css -->
 	<link rel="stylesheet" href="css/style.css" type="text/css"/>
 	<link rel="stylesheet" href="css/headerStyle.css" type="text/css"/>
+	
+	<style type="text/css">
+		.list-group .active{
+			background: #bb372d !important;
+		}
+	</style>
 
 </head>
 <body>
+
 
 	<!-- include header -->
 	<header>
@@ -61,57 +63,106 @@
                 </div>
 
             </div>
-<%@ include file="navBar.jsp" %>
+
         </div> <!--/contaner-->
 	
 	
 	</header>
 	
-
 	
-
 	<!-- include navbar -->
 	<div class="container">
 	
 		<%@ include file = "navBar.jsp"  %>
 	
 	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- camp schedule -->	
+		<main>
+			
+			<div class="container-fluid" style="max-width: 1300px">
+			
+				<div class="row mt-3">
+				
+				
+					<!-- first col -->
+					<div class="col-md-2" >
+						
+							<!-- camp categories -->
+							
+							<div class="list-group">
+							
+							<a href="#" onclick="getCampDetails(0,this)" class="clickThisLink list-group-item list-group-item-action active" >
+							    All Camp
+							  </a>
+							
+							<%
+							
+							ArrayList<campCategory> campCat = donationCampManagemetDButill.getAllCampCategory();
+							
+							for(campCategory cd:campCat){
+								
+								%>
+								
+							  	<a href="#" onclick="getCampDetails(<%= cd.getCid() %>,this)" class="clickThisLink list-group-item list-group-item-action"><%= cd.getCampName() %> </a>
+																
+								<%
+								
+							}
+							
+							%>
+							
 
-
-	<!-- include organizeDonationCampModal -->
-	<div class="container">
-
-		<%@ include file = "organizeDonationCampModal.jsp"  %>
+							</div>
+							
+						
+					</div>
+					
+					
+					
+					<!-- second col -->
+				    <div class="col-md-10" >
+						
+						<!-- camp list -->
+							
+						<div class="container text-center" id="loader">
+									
+							<i class="fa fa-refresh fa-4x fa-spin"></i>
+							<h3 class="mt-2">Loading....</h3>
+									
+						</div>
+									
+						<div class="container-fluid " id="campDetailsPalce">
+									
+									
+						</div>
+								
+					</div>
+				
+				
+				
+				</div>
+			
+			</div>
+		
+		</main>
+		<!-- //camp schedule -->	
 	
-	</div>
 	
-
-	
-
-
-
-
-	<footer>
-	<%@ include file="footer.jsp" %>
-	
-	</footer>
+			<!-- include footer -->
+		<%@ include file = "footer.jsp"  %>
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<!-- jquery script -->
+		<!-- jquery script -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -122,13 +173,74 @@
 	
 	
 	
-	<!-- when click the book log icon show the modal -->
-	<script>
-	    $('.blmodal').on('click', function(e){
-	      e.preventDefault();
-	      $('#organizeDonationCamp').modal('show');
-	    });
-  	</script>
 	
+	<!-- camp  details shown --> 
+	<script>
+	
+	
+	
+		function getCampDetails(cid, activeThisSelectedLink) {
+			
+			//cid.preventDefault();
+			
+			//loder show
+			$('#loader').show();
+			//hide content
+			$('#campDetailsPalce').hide();
+			//catch the click link and remove active class
+			$('.clickThisLink').removeClass('active');
+			
+			$.ajax({
+				
+				//goto jsp page
+				url : "campDetailsPost.jsp",
+				data: {catid: cid},
+				success: function (data, textStatus, jqXHR) {
+					
+					//hide loading containe
+					$('#loader').hide();
+					//show content
+					$('#campDetailsPalce').show();
+					
+					//showing jsp page content in given id palce
+					$('#campDetailsPalce').html(data);
+					//console.log(data);
+					
+					//active link when click
+					$(activeThisSelectedLink).addClass('active');
+				}
+				
+			});//ajax end
+			
+			
+		}//get fun end
+	
+	
+		
+		$(document).ready(function(e) {
+			
+			//by default select all catagorey 
+			let allCatReg = $('.clickThisLink')[0];
+			
+			//call getDocDetails function
+			//0 mens when id is not pass all deta show
+			getCampDetails(0, allCatReg);
+			
+		});//main end
+	
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 </body>
 </html>

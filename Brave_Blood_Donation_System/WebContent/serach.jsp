@@ -1,19 +1,17 @@
-
 <%@page import="com.braveBloodDonation.helper.wordLimit"%>
-<%@page import="java.util.List"%>
+<%@page import="java.io.PrintWriter"%>
 <%@page import="com.braveBloodDonation.entities.organizeDonationCamp"%>
 <%@page import="com.braveBloodDonation.entities.campDetails"%>
-<%@page import="com.braveBloodDonation.entities.campCategory"%>
 <%@page import="com.braveBloodDonation.dao.donationCampManagemetDButill"%>
-<%@page import="java.util.ArrayList"%>
-
+<%@page import="com.braveBloodDonation.entities.campCategory"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-
+<title>Serach here..</title>
 
 
 	<!-- boostrap cdn -->
@@ -36,182 +34,23 @@
 </head>
 <body>
 
+		  
 
-		
-		
-	<div class="donationTab">
-		
-	<nav>
-		  <div class="nav nav-tabs" id="nav-tab" role="tablist" style="font-weight: bold;">
-		    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">CAMP CATEGORY</a>
-		    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">CONFIRM REQUEST</a>
-		    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">DONATION CAMP</a>
-		  </div>
-	</nav>
-		
-	</div> <!-- container end -->
 	
-	
-	<!-- tab content -->
-	<div class="container tab-content donationTabContent" id="nav-tabContent" style="max-width: 2000px">
-		  
-		  <!-- camp category -->
-		  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
-		  
-		  	<div class="container btn-area">
-				
-				<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#addCategory" >++ Add Category ++</button>
-				<button type="button" class="btn btn-primary" id="btnExport"  > <span><i class="fas fa-print"></i> </span>  Generate Report</button>
-					
-			</div>
-		  	
-		  
-		  	<div class="container table-area">
-		  	
-			  	<table class="table table-hover" id="campCatTable">
-					  <thead  class=" text-center" style="font-weight: bold; background:#bb372d; color: white;">
-					    <tr>
-					      <th scope="col">Category ID</th>
-					      <th scope="col">Category Name</th>
-					      <th scope="col">Action</th>
-					    </tr>
-					  </thead>
-					  <tbody class="text-center">
-					  
-					  <%
-					  	ArrayList<campCategory> campCat = donationCampManagemetDButill.getAllCampCategory();
-					  	
-					  	for(campCategory ct:campCat){
-					  	
-					  		%>
-					  		
-							    <tr style="font-weight: bold;">
-								      <td><%= ct.getCid() %></td>
-								      <td><%= ct.getCampName() %></td>
-					      			  <td>
-										 <a href="#categoryModal"
-														
-											data-cid="<%= ct.getCid() %>"
-											data-cname="<%= ct.getCampName() %>"
-			
-										 class="btn btn-warning mr-2" type="button" data-toggle="modal" data-target="#categoryModal"><i class="fas fa-pen"></i></a>
-										 <a href="#" onclick="getCampCatIDForDelete(<%= ct.getCid() %>)" class="btn btn-danger " type="button" ><i class="far fa-trash-alt"></i></a>
-							
-																		
-					 			     </td>
-							    </tr>
-					  		
-					  		
-					  		<%
-					  	}
-					  %>
-					  
-					
-					  </tbody>
-				</table>
-		  	
-		  	</div>
+		
 
-			<div style="color: #f2f2f2">hide</div>
 		  
-		  </div> <!-- //camp category -->
-		  
-		  
-		  
-		  
-		  <!-- confirm request -->
-		  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-		   
-		    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
-		  	
-		  	
-		  		<div class="container table-area" style="max-width: 2000px">
-		  	
-				  	<table class="table table-hover" >
-						  <thead  class="text-center" style="font-weight: bold; background:#bb372d; color: white">
-						    <tr>
-						      <th scope="col">OID</th>
-						      <th scope="col">Camp Category</th>
-						      <th scope="col">Organization Name</th>
-						      <th scope="col">Date&Time</th>
-						      <th scope="col">Address</th>
-						      <th scope="col">Expected Donors</th>
-						      <th scope="col">Arrangement</th>
-						      <th scope="col">Organizer Details </th>
-						 
-						      <th scope="col" style="width: 200px;">Action</th>
-						    </tr>
-						  </thead>
-						  <tbody class="text-center">
-						 	
-						 	<%
-						 	
-						 		ArrayList<organizeDonationCamp> orgCamp = donationCampManagemetDButill.getAllConfirmCampDetails();
-						 		
-						 		for(organizeDonationCamp or:orgCamp){
-						 			%>
-						 			
-								    <tr style="font-weight: bold;">
-									      <td> <%= or.getOrgId() %> </td>
-									      <td> <%= or.getCampCat() %> </td>
-									      <td> <%= or.getOrganizationName() %> </td>
-									      <td> <%= or.getCampDate() + " " + or.getCampTime() %> </td>
-									      <td> <%= or.getAddress() %> </td>
-									      <td> <%= or.getExceptDonors() %> </td>
-									      <td> <%= or.getArrangement() %> </td>
-									      <td> <p>Name : <%= or.getOrganizerName() %> </p> <p>Email : <%= or.getOrganizerEmail() %> </p>  </td>
-									      
-									    
-						      			  <td>
-											<div class="container text-center mr-4">
-													
-												<a href="#" onclick="getOrgIDFroConfirm(<%= or.getOrgId() %>)" class="btn btn-success mr-2" type="button" > <span><i class="fas fa-check"></i></span></a>
-												<a href="#" onclick="getOrgIDForDelete(<%= or.getOrgId() %>)" class="btn btn-danger " type="button" ><span><i class="far fa-times-circle"></i></span></a>
-													
-											</div>
-																			
-						 			     </td>
-								    </tr>
-						 			
-						 			<%
-						 		}
-						 	%>
-						 		
-						
-						 </tbody>
-					</table>
-					
-					<div>
-					<%
-						if(orgCamp.size()==0){
-							
-							//if list array is emplty, then show this
-							out.println("<h3 class='display-4 text-center mt-4'>No camp organization requests are availabel here...</h3>");
-						}
-					%>					
-					</div>
-		  	
-		  	</div>
 
-			<div style="color: #f2f2f2">hide</div>
-		  	
-		  	</div>
-		  		  
-		  </div>
-		  <!--end of confirm request -->
-		
-		
-		
-		
-		
-		
-		  <!-- donation camp management -->
-		  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 		  
-		  	<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
+		 
+ <!-- donation camp management -->
+		 
+		  
 		  	
-		  		<div class="container btn-area" style="max-width: 2000px">
-				
+		  	
+		  		<div class="container btn-area" style="max-width: 2000px; background: #f2f2f2; margin-top: 20px; margin-bottom: 20px; padding: 20px;">
+					
+					<a href="adminPanel.jsp" type="button" class="btn btn-primary" ><span><i class="fas fa-chevron-left"></i></span> Go Back</a>
 					<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#addCamp" >++ Add Camp ++</button>
 					<button type="button" class="btn btn-primary" id="btnExport2"  > <span><i class="fas fa-print"></i> </span>  Generate Report</button>
 					
@@ -227,7 +66,7 @@
 		  		<div class="container table-area" style="max-width: 2000px">
 		  	
 				  	<table class="table table-hover" id="donationCampDetails">
-						  <thead  class="text-center" style="font-weight: bold; background:#bb372d; color: white;">
+						  <thead  class="text-center tHead" style="font-weight: bold; background:#bb372d; color: white;">
 						    <tr>
 						      <th scope="col">CID</th>
 						      <th scope="col">Poster</th>
@@ -246,51 +85,79 @@
 						  <tbody class="text-center">
 						 	
 						 	<%
-						 		ArrayList<campDetails> campDetil = donationCampManagemetDButill.getAllCampDetails();
-						 								 		
-						 		for(campDetails cd:campDetil){
-						 		%>
+						 		String serachData =  request.getParameter("serachData");
+						 		List<campDetails> campDetil = donationCampManagemetDButill.getCampDetailsBySearch(serachData);
 						 		
-								    <tr style="font-weight: bold;">
-									      <td> <%= cd.getCampId() %> </td>
-									      <td> <img class="img-thumbnail" src="images/<%= cd.getPoster() %>" alt="Card image cap" id="imgPoster" style="width: 60px; height: 60px"> </td>
-									      <td> <%= cd.getCampCat() %> </td>
-									      <td> <%= cd.getOrganizationName() %> </td>
-									      <td> <%= cd.getCampDate() + " " + cd.getCampTime() %> </td>
-									      <td> <%= cd.getAddress() %> </td>
-									      <td> <%= wordLimit.get10Words(cd.getLocation()) %> </td>
-									      <td> <%= cd.getExceptDonors() %> </td>
-									      <td> <%= cd.getArrangement() %> </td>
-									      <td> <p>Name : <%= cd.getOrganizerName() %> </p> <p>Email : <%= cd.getOrganizerEmail() %></p>  </td>
-									      
-									    
-						      			  <td>
-											 <a href="#campDetailsEdit"
-															
-												data-campid="<%= cd.getCampId() %>"
-												data-poster="images/<%= cd.getPoster() %>"
-												data-campcat="<%= cd.getCampCat() %>"
-												data-orgname="<%= cd.getOrganizationName() %>"
-												data-cdate="<%= cd.getCampDate() %>"
-												data-ctime="<%= cd.getCampTime() %>"
-												data-address="<%= cd.getAddress() %> "
-												data-location="<%= cd.getLocation() %>"
-												data-exdonors="<%= cd.getExceptDonors() %>"
-												data-arrangement="<%= cd.getArrangement() %>"
-												data-ozername="<%= cd.getOrganizerName() %>"
-												data-ozermail="<%= cd.getOrganizerEmail() %>"
-				
-											 class="btn btn-warning mr-2" type="button" data-toggle="modal" data-target="#campDetailsEdit"><i class="fas fa-pen"></i></a>
-											 <a href="#" onclick="getCampIDForDeleteCampDetails(<%= cd.getCampId() %>)" class="btn btn-danger " type="button" ><i class="far fa-trash-alt"></i></a>
-								
-																			
-						 			     </td>
-								    </tr>
+						 		if(campDetil.size()==0){
+						 			%>
+						 			<style>
+						 				.tHead{
+						 					display: none;
+						 				}
+						 			</style>
 						 			
-						 		
-						 		
-						 		<%
+						 			<h3 class='display-4 text-center mt-4'>No Details were found with the words <%out.print(serachData); %></h3>
+						 	
+						 			<%
+
+						 		}else if(serachData.isEmpty() || serachData ==  null){
+						 			%>
+						 			<style>
+						 				.tHead{
+						 					display: none;
+						 				}
+						 			</style>
+						 			
+						 			<h3 class='display-4 text-center mt-4'>Please enter values into search feild...</h3>
+						 	
+						 			<%
+						 		}else{
+						 			for(campDetails cd:campDetil){
+								 		%>
+								 		
+										    <tr style="font-weight: bold;">
+											      <td> <%= cd.getCampId() %> </td>
+											      <td> <img class="img-thumbnail" src="images/<%= cd.getPoster() %>" alt="Card image cap" id="imgPoster" style="width: 60px; height: 60px"> </td>
+											      <td> <%= cd.getCampCat() %> </td>
+											      <td> <%= cd.getOrganizationName() %> </td>
+											      <td> <%= cd.getCampDate() + " " + cd.getCampTime() %> </td>
+											      <td> <%= cd.getAddress() %> </td>
+											      <td> <%= wordLimit.get10Words(cd.getLocation()) %> </td>
+											      <td> <%= cd.getExceptDonors() %> </td>
+											      <td> <%= cd.getArrangement() %> </td>
+											      <td> <p>Name : <%= cd.getOrganizerName() %> </p> <p>Email : <%= cd.getOrganizerEmail() %></p>  </td>
+											      
+											    
+								      			  <td>
+													 <a href="#campDetailsEdit"
+																	
+														data-campid="<%= cd.getCampId() %>"
+														data-poster="images/<%= cd.getPoster() %>"
+														data-campcat="<%= cd.getCampCat() %>"
+														data-orgname="<%= cd.getOrganizationName() %>"
+														data-cdate="<%= cd.getCampDate() %>"
+														data-ctime="<%= cd.getCampTime() %>"
+														data-address="<%= cd.getAddress() %> "
+														data-location="<%= cd.getLocation() %>"
+														data-exdonors="<%= cd.getExceptDonors() %>"
+														data-arrangement="<%= cd.getArrangement() %>"
+														data-ozername="<%= cd.getOrganizerName() %>"
+														data-ozermail="<%= cd.getOrganizerEmail() %>"
+						
+													 class="btn btn-warning mr-2" type="button" data-toggle="modal" data-target="#campDetailsEdit"><i class="fas fa-pen"></i></a>
+													 <a href="#" onclick="getCampIDForDeleteCampDetails(<%= cd.getCampId() %>)" class="btn btn-danger " type="button" ><i class="far fa-trash-alt"></i></a>
+										
+																					
+								 			     </td>
+										    </tr>
+								 			
+								 		
+								 		
+								 		<%
+								 		}
 						 		}
+						 								 		
+						 		
 						 	%>
 
 						 </tbody>
@@ -300,109 +167,18 @@
 
 			<div style="color: #f2f2f2">hide</div>
 		  	
-		  	</div>
-		  	
+		
+		  
+		  
 
-		  		  
-		  </div>
-		  <!-- end of donation camp management -->
-		  
-		  
-	</div>
-	<!-- //tab content -->
 	
 		
 		
 	<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->	
-	<!-- add category form -->
-	<div class="container">
 	
-		<!-- Modal -->
-		<div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header" style="background: #bb372d">
-		        <h5 class="modal-title text-white" id="exampleModalLongTitle">Add Donation Camp Category</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body" style="font-weight: bold;">
-		        
-		        <form id="campCat" action="addCampCategoryServlet" method="post">
-				
-					<div class="form-group">
-						<label for="catName">Camp Category Name</label>
-						<input name="catName" type="text" class="form-control" id="catName"  placeholder="Enter Camp Category Name" required="required">
-						<small id="emailHelp" class="form-text text-muted">Cannot add already available category</small>
-					</div>
-						
-				     <div class="modal-footer">
-		       			 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		       			 <button type="submit" class="btn btn-primary">Submit</button>
-		     		</div>
-				</form>		    
-		        
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	
-	</div>
-	<!-- //add category form -->	
 		
 		
-		
-	<!-- camp category edit -->
-	<div class="container">
 	
-		<!-- Modal -->
-			<div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header" style="font-weight: bold; background: #bb372d">
-			        <h5 class="modal-title text-white" id="exampleModalLabel">Update Donation Camp Category</h5>
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			          <span aria-hidden="true">&times;</span>
-			        </button>
-			      </div>
-			      <div class="modal-body" style="font-weight: bold;">
-			      
-			       
-				       <form id="editCampCategory" action="editCampCategoryServlet" method="post" enctype="multipart/form-data"> 
-				       
-					       	<table class="table" style="font-weight: bold;">
-					        
-					        	<tbody>
-					        	<tr>
-								    <th scope="row">Category ID</th>
-								     <td><input name="c_id" type="text" class="form-control" readonly="readonly" id="c_id"  value="c_id"></td>
-								</tr>
-					        
-					        	<tr>
-					        		<th>Camp Category Name</th>
-					        		<td> <input name="c_name" type="text" class="form-control" id="c_name"  value="c_name"></td>
-					        	
-					        	</tr>
-					        	       
-					     		</tbody>
-					      		
-					      	</table>	
-				       
-						      <div class="modal-footer">
-						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					       		<button type="submit" class="btn btn-primary">Save changes</button>
-					      	</div>
-					       
-				       
-				       </form>
-				       	
-				   </div>
-				 </div>
-			  </div>
-			</div> <!-- modal end -->
-	
-	</div> <!-- end of camp cat edit -->	
 	
 	
 	
@@ -488,6 +264,7 @@
 														      
 														      <!-- get camp category details -->
 														      <%
+														      ArrayList<campCategory> campCat = donationCampManagemetDButill.getAllCampCategory();
 										
 														    		for(campCategory ct:campCat){
 														    		%>
@@ -729,7 +506,20 @@
         $('#timepicker2').timepicker();
     </script>
     
-  
+    
+    
+
+    	
+	<script>
+	
+	$(document).ready(function() {
+		
+		console.log('loard addd category data...')
+		
+		
+	})
+	</script>
+	
 
 </body>
 </html>
