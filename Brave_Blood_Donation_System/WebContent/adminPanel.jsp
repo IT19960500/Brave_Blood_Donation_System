@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 
-	<title>admin panel</title>
+	<title>Admin Panel</title>
 	
 	<!-- boostrap cdn -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -30,29 +30,29 @@
 	<div class="container" style="max-width: 5000px">
 		
 		<div class="tab adminTab">
+
 		  <button class="tablinks" onclick="openCity(event, 'userManagment')" >User Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'appintmentManagement')">Appointment Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'donationCampManagement')">Donation Camp Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')"id="defaultOpen">Notice Management</button>
-		  <button class="tablinks" onclick="openCity(event, 'contactUsManagement')">ContactUs Management </button>
 
-				
-		
+		  <button class="tablinks" onclick="openCity(event, 'userManagment')">User Management</button>
+		  <button class="tablinks" onclick="openCity(event, 'appintmentManagement')">Appointment Management</button>
+		  <button class="tablinks" onclick="openCity(event, 'donationCampManagement')">Donation Camp Management</button>
+		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')"id="defaultOpen" >Notice Management</button>
+
+		  <button class="tablinks" onclick="openCity(event, 'contactUsManagement')">ContactUs Management </button>
 		</div>
 		
 		
 		<!-- user management -->
 		<div id="userManagment" class="tabcontent border-light">
 		
-			<div class="container mt-3">
-				
-			<button type="button" class="btn btn-primary" id="btnExport"  > <span><i class="fas fa-print"></i> </span>  Generate Report</button>
-										
-			</div>
-		  
+					  
 		  	<div class="container mt-3"> 
 		 
-		 		<p>user management eka methana gahanna</p>
+		 			<!-- include user managemet admin page -->
+ 					<%@ include file = "userManagementAdmin.jsp" %>
 					
 		  	</div>
 			
@@ -70,15 +70,11 @@
 		
 			<div class="container mt-3">
 				
-			<button type="button" class="btn btn-primary" id="btnExport"  > <span><i class="fas fa-print"></i> </span>  Generate Report</button>
+					<!-- include appointmnet managemet admin page -->
+ 					<%@ include file = "appointmentManagementAdmin.jsp" %>
 										
 			</div>
 		  
-		  	<div class="container mt-3"> 
-		 
-		 		<p>appoinmnet management eka methana gahanna</p>
-					
-		  	</div>
 						
 		</div>
 		<!-- //appointment management -->
@@ -90,16 +86,16 @@
 		
 			<div class="container mt-3">
 				
-			<button type="button" class="btn btn-primary" id="btnExport"  > <span><i class="fas fa-print"></i> </span>  Generate Report</button>
+					<div class="container mt-3">
+				
+					<!-- include appointmnet managemet admin page -->
+ 					<%@ include file = "donationCampManagementAdmin.jsp" %>
+										
+			</div>
 										
 			</div>
 		  
-		  	<div class="container mt-3"> 
-		 
-		 		<p>donation camp management eka methana gahanna</p>
-					
-		  	</div>
-						
+		
 		</div>
 		<!-- //Donation Camp management-->
 
@@ -108,6 +104,7 @@
 		<!-- Notice Camp management -->
 		<div id="noticeManagement" class="tabcontent border-light">
 		
+
 			
 		  
 		  	<div class="container mt-3"> 
@@ -116,6 +113,17 @@
 					<!-- include notice managemet admin page -->
  					<%@ include file = "noticeManagementAdmin.jsp" %>
 		  	</div>
+
+			<div class="container mt-3">
+				
+					<!-- include notice managemet admin page -->
+ 					<%@ include file = "noticeManagementAdmin.jsp" %>
+ 					
+										
+			</div>
+		  
+	
+
 						
 		</div>
 		<!-- //Notice Camp management-->
@@ -125,6 +133,7 @@
 		<!-- ContactUsp management -->
 		<div id="contactUsManagement" class="tabcontent border-light">
 		
+
 			
 		  
 		  	<div class="container mt-3"> 
@@ -133,6 +142,15 @@
  					<%@ include file = "contactUsManagementAdmin.jsp" %>
 					
 		  	</div>
+
+			<div class="container mt-3">
+			
+			<!-- include contactUs managemet admin page -->
+ 					<%@ include file = "contactUsManagementAdmin.jsp" %>
+										
+			</div>
+		
+
 						
 		</div>
 		<!-- //ContactUs management-->
