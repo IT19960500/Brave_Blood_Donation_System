@@ -95,7 +95,8 @@
       </div>
       <div class="modal-body">
       
-        <form id="updateNews" class="border border-secondary needs-validation" novalidate action="UpdateNewsServlet" method="post" enctype="multipart/form-data">
+        <form id="updateNews" class="border border-secondary needs-validation" 
+         action="UpdateNewsServlet" method="post" enctype="multipart/form-data">
 		<br>
 		<div class="input-group mb-3">
 		  <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;" >Article ID</span>
@@ -107,42 +108,27 @@
 		  <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Author ID</span>
 		  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
 		  name="newsAuthorID" id="news_author_id"  value="news_author_id"required>
-		  	  <div class="invalid-tooltip">
-		        Please provide the Author ID.
-		      </div>
 		</div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Article Heading</span>
   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" 
   		name="newsHeading" id="news_heading" value="news_heading"required>
-     <div class="invalid-tooltip">
-        Please provide the Article Heading.
-      </div>
 </div>
 <div class="input-group">
   <span class="input-group-text" style="width:150px;">Description</span>
   <textarea class="form-control" aria-label="With textarea"
   name="newsDescription" id="news_description" value="news_description" required></textarea>
-      <div class="invalid-tooltip">
-        Please provide the Article description.
-      </div>
 </div>
 <br>
 <div class="input-group">
   <span class="input-group-text" style="width:150px;">Article</span>
   <textarea class="form-control" aria-label="With textarea" 
   name="newsArticle" id="news_article" value="news_article" required></textarea>
-      <div class="invalid-tooltip">
-        Please provide the Article.
-      </div>
 </div>
 <br>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Upload Image</span>
-  <input type="file" class="form-control"  name="newsPhoto" id="news_photo" value="news_photo" >
-  <div class="invalid-tooltip">
-        Please provide an Image.
-      </div>
+  <input type="file" class="form-control"  name="newsPhoto" id="news_photo" value="news_photo" required>
 </div>
 <br>
  <div class="container bg-light">
@@ -326,167 +312,6 @@ function getNewsIDDelete(newsid) {
 	});//swal end
 	
 }//fun end
-</script><script>
-
-
-//Update News category
-
-$(document).on("click", "a[href='#newsDetailsEdit']", function () {
-	
-	var newsId = $(this).data('newsid');
-    var newsAuthorId = $(this).data('newsauthorid');
-    var newsHeading = $(this).data('newsheading');
-    var newsDescription = $(this).data('newsdescription');
-    var newsArticle=$(this).data('newsarticle');
-    var newsPhoto = $(this).data('newsphoto');
-   
-    
-    $(".modal-body #news_id").val( newsId );
-    $(".modal-body #news_author_id").val( newsAuthorId );
-    $(".modal-body #news_heading").val( newsHeading );
-    $(".modal-body #news_description").val( newsDescription);
-    $(".modal-body #news_article").val( newsArticle );
-    $(".modal-body #news_photo").val( newsPhoto );
-   
-	
-	});
-
 </script>
-
-<script>
-
-//Update News category
-
-$(document).ready(function (e) {
-	
-	console.log('loadring camp cat edit page..');
-	
-	
-
-	$('#updateNews').on("submit", function(evenet) {
-		
-		evenet.preventDefault();
-		
-	
-		let form = new FormData(this);
-		
-		
-		Swal.fire({
-			  title: 'Are you sure?',
-			  text: "Do you wnat to update this!",
-			  icon: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Yes, update it!'
-			}).then((result) => {
-				
-			  if (result.isConfirmed) {
-		
-					$.ajax({
-						
-						
-						url: "UpdateNewsServlet",
-						type: 'POST',
-						data: form,
-						success: function(data, textStatus, jqXHR) {
-							
-							if(data.trim() == "done"){
-								
-								new swal("Good job!", "Update Successfully!", "success")
-								.then((value) => {
-								  window.location="news2.jsp"
-								});
-								
-							}else{
-								new swal("Error!", data , "error");
-							}
-							
-							
-						},
-						error: function (jqXHR, textStatus, errorThrown) {
-							new swal("Error!", "Something went wrong !, Try Again..", "error");
-						
-						},
-						processData: false,
-						contentType: false
-						
-						
-					});//ajax end
-			    		    
-			    
-			  }//result confirm end
-				  
-			});//swal confirm end
-					
-		
-	});//submit fun end	
-	
-});//end main
-
-//end of update news category
-
-
-</script>
-
-
-
-<script>
-
-function getNewsIDDelete(newsid) {
-	
-	Swal.fire({
-		
-		  title: 'Are you sure?',
-		  text: "You won't be able to revert this!",
-		  icon: 'warning',
-		  showCancelButton: true,
-		  confirmButtonColor: '#3085d6',
-		  cancelButtonColor: '#d33',
-		  confirmButtonText: 'Yes, delete it!'
-	
-	}).then((result) => {
-		if (result.isConfirmed) {
-			
-			$.ajax({
-				
-				//goto jsp page
-				url : "newsDeleteServlet",
-				type: 'POST',
-				data: {nId: newsid},
-				success: function (data, textStatus, jqXHR) {
-					
-					 Swal.fire('Done!', '', 'success')
-					 .then((result) => {
-							
-							if (result.isConfirmed) {
-				  				
-								
-									if(data.trim() == "done"){
-									
-											window.location="news2.jsp"
-										
-									}else{
-										swal(data);
-										
-									}
-				   
-									
-								}
-							});
-					
-				}
-				
-			});//ajax end
-			
-			
-		} 
-		
-								
-	});//swal end
-	
-}//fun end
-</script>
-
 </body>
 </html>
