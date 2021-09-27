@@ -99,7 +99,8 @@
       </div>
       <div class="modal-body">
       
-<form  id="updateHealth" action="UpdateHealthServlet" method="post" enctype="multipart/form-data" class="border border-secondary needs-validation" novalidate>
+<form  id="updateHealth" action="UpdateHealthServlet" method="post" enctype="multipart/form-data" 
+class="border border-secondary needs-validation">
 <br>
 <h4>Update Health Articles</h4>
 <div class="input-group mb-3">
@@ -111,42 +112,27 @@
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Author ID</span>
   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" 
    name="healthAuthorID" id="health_author_id"  value="health_author_id"required>
-  	  <div class="invalid-tooltip">
-        Please provide the Author ID.
-      </div>
 </div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Article Heading</span>
   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" 
   name="healthHeading" id="health_heading" value="health_heading" required>
-     <div class="invalid-tooltip">
-        Please provide the Article Heading.
-      </div>
 </div>
 <div class="input-group">
   <span class="input-group-text" style="width:150px;">Description</span>
   <textarea class="form-control" aria-label="With textarea" 
   name="healthDescription" id="health_description" value="health_description"required></textarea>
-      <div class="invalid-tooltip">
-        Please provide the Article description.
-      </div>
 </div>
 <br>
 <div class="input-group">
   <span class="input-group-text" style="width:150px;">Article</span>
   <textarea class="form-control" aria-label="With textarea" 
   name="healthArticle" id="health_article" value="health_article"required></textarea>
-      <div class="invalid-tooltip">
-        Please provide the Article.
-      </div>
 </div>
 <br>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Upload Image</span>
   <input class="form-control" type="file"  name="healthPhoto" id="health_photo" value="health_photo" required>
-  <div class="invalid-tooltip">
-        Please provide an Image.
-      </div>
 </div>
 <br>
  <div class="container bg-light">

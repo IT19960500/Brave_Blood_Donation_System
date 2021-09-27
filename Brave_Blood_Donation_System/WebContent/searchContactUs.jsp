@@ -112,7 +112,8 @@
       </div>
       <div class="modal-body">
       
-        <form id="updateContactUs" class="border border-secondary needs-validation" novalidate action="UpdateContactUsServlet" method="post" enctype="multipart/form-data">
+        <form id="updateContactUs" class="border border-secondary needs-validation" 
+         action="UpdateContactUsServlet" method="post" enctype="multipart/form-data">
 	<br>
 <h4>Update ContactUs</h4>
 <div class="input-group mb-3">
@@ -131,39 +132,24 @@
       <option>Registration</option>
       <option>Requirements to be a blood donor</option>
     </select>
-  <div class="invalid-tooltip">
-        Please provide the question type.
-      </div>
 </div>
 <div class="input-group">
   <span class="input-group-text" style="width:150px;">Question</span>
   <textarea class="form-control" name="contactUsQus" id="contactus_qus" value="contactus_qus" aria-label="With textarea" required></textarea>
-      <div class="invalid-tooltip">
-        Please ask your question.
-      </div>
 </div>
 <br>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Name</span>
   <input type="text" class="form-control" name="contactUsName" id="contactus_name" value="contactus_name"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-  <div class="invalid-tooltip">
-        Please provide your name.
-      </div>
 </div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">E-mail</span>
   <input type="email" class="form-control" name="contactUsEmail" id="contactus_email" value="contactus_email"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-     <div class="invalid-tooltip">
-        Please provide your email address.
-      </div>
 </div>
 
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Phone</span>
   <input type="phone" class="form-control" name="contactUsPhone" id="contactus_phone" value="contactus_phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-     <div class="invalid-tooltip">
-        Please provide your mobile number.
-      </div>
 </div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Question Status</span>
@@ -174,9 +160,6 @@
       <option>Approved</option>
       <option>Rejected</option>
     </select>
-  <div class="invalid-tooltip">
-        Please Approve or reject the question.
-      </div>
 </div>
 <br>
  <div class="container bg-light">
@@ -362,26 +345,7 @@ function getContactUsIDDelete(contactusid) {
 	
 }//fun end
 </script>
- <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script>
+ 
 
 <script>
 $("#btnExport2").on("click", function () {

@@ -150,25 +150,26 @@
       <div class="modal-body">
       
 
+
         <form id="updateNews" class="border border-secondary needs-validation" novalidate action="UpdateNewsServlet" method="post" enctype="multipart/form-data">
 
         <form id="updateNews" class="border border-secondary needs-validation" novalidate 
+
+        <form id="updateNews" class="border border-secondary needs-validation" 
+
         action="UpdateNewsServlet" method="post" enctype="multipart/form-data">
 
 		<br>
 		<div class="input-group mb-3">
 		  <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;" >Article ID</span>
 		  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" 
-		   readonly="readonly" name="newsId" id="news_id" value="news_id">	  
+		   readonly="readonly" name="newsId" id="news_id" value="news_id" >	  
 		</div>
 				
 		<div class="input-group mb-3">
 		  <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Author ID</span>
 		  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
-		  name="newsAuthorID" id="news_author_id"  value="news_author_id"required>
-		  	  <div class="invalid-tooltip">
-		        Please provide the Author ID.
-		      </div>
+		  name="newsAuthorID" id="news_author_id"  value="news_author_id" required >
 		</div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Article Heading</span>
@@ -181,6 +182,9 @@
      <div class="invalid-tooltip">
         Please provide the Article Heading.
       </div>
+
+  		name="newsHeading" id="news_heading" value="news_heading" required >
+
 </div>
 <div class="input-group">
   <span class="input-group-text" style="width:150px;">Description</span>
@@ -190,6 +194,7 @@
   <textarea class="form-control" aria-label="With textarea"
 
   name="newsDescription" id="news_description" value="news_description" required></textarea>
+
       <div class="invalid-tooltip">
         Please provide the Article description.
       </div>
@@ -199,6 +204,9 @@
   <span class="input-group-text" style="width:150px;">Article</span>
   <textarea type="text" class="form-control" aria-label="With textarea"
   name="newsArticle" id="news_article" value="news_article" required></textarea>
+
+
+  </div>
 
 <br>
 <div class="input-group">
@@ -210,13 +218,13 @@
         Please provide the Article.
       </div>
 </div>
+
+ </div>
+
 <br>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Upload Image</span>
-  <input type="file" class="form-control"  name="newsPhoto" id="news_photo" value="news_photo" >
-  <div class="invalid-tooltip">
-        Please provide an Image.
-      </div>
+  <input type="file" class="form-control"  name="newsPhoto" id="news_photo" value="news_photo" required="required" >
 </div>
 <br>
  <div class="container bg-light">
@@ -426,27 +434,7 @@ function getNewsIDDelete(newsid) {
 }//fun end
 </script>
 
- <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script>
-
+ 
 
 </body>
 </html>
