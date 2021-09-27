@@ -33,20 +33,20 @@
 		  <button class="tablinks" onclick="openCity(event, 'userManagment')" >User Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'appintmentManagement')">Appointment Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'donationCampManagement')">Donation Camp Management</button>
-		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')" id="defaultOpen">Notice Management</button>
-		  <button class="tablinks" onclick="openCity(event, 'contactUsManagement')">ContactUs Management </button>
+		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')" >Notice Management</button>
+		  <button class="tablinks" onclick="openCity(event, 'contactUsManagement')"id="defaultOpen">ContactUs Management </button>
 		</div>
 		
 	
 	
 
 		<!-- Notice Camp management -->
-		<div id="noticeManagement" class="tabcontent border-light">
+		<div id="contactUsManagement" class="tabcontent border-light">
 		
 			<div class="container mt-3">
 				
 					<!-- include notice managemet admin page -->
- 					<%@ include file = "EventFile.jsp" %>
+ 					<%@ include file = "searchContactUs.jsp" %>
  					
 										
 			</div>
@@ -55,9 +55,7 @@
 	
 	
 	
-
 	</div>
-
 	
 	
 	

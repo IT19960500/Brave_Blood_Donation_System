@@ -1,11 +1,9 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.braveBloodDonation.entities.News"%>
 <%@page import="com.braveBloodDonation.dao.NewsDao"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +27,6 @@
 <body>
 
 	<h1 style="color:red;font-family:Helvetica, sans-serif; font-size: 100px;">NEWS</h1>
-
 		<div class="col-md-6 mb-4">
       		<div class="input-group md-form form-sm form-2 pl-0">
         		<input class="form-control my-0 py-1 amber-border"style="float:right;"type="text" placeholder="Search" aria-label="Search">
@@ -41,82 +38,48 @@
     	</div>
 	<br>
 	
-
-	<form  action="searchNewsMain.jsp" method="post" >
-		<div class="col-md-6 mb-4">
-      		<div class="input-group md-form form-sm form-2 pl-0">
-      		<div class="input-group-append">  
-        		<input class="form-control my-0 py-1 amber-border"style="float:right;"type="search"
-        		placeholder="Search" aria-label="Search" name="searchData" id="searchData" >
-        			
-        			 <Button class="btn btn-success" style="width: 80px; margin-right:10px;">Search</Button>    	
-           				<a href="addNews.jsp" class="btn btn-danger" style="background: #bb372d;">Add New Article</a>  
-           				<a href="adminPanel.jsp" class="btn btn-warning" style="margin-left:10px;width:80px;">Back </a>                                                                  
-        			</div>
-        			 	
-      		</div>
-    	</div>
-    	</form>	
-    
-
-  
-	<br>
-
 	<div class="container table-area">
 		  	
-			  	<table  id="newsTable">
-					  <tbody >
+			  	<table class="table table-hover" id="newsTable">
+					  <thead  class=" text-center" style="font-weight: bold; background:#bb372d; color: white;">
+					    <tr>
+					      <th scope="col">News ID</th>
+					      <th scope="col">AuthorID</th>
+					       <th scope="col">NewsHeading</th>
+					        <th scope="col">NewsDescription</th>
+					         <th scope="col">NewsPhoto</th>
+					      <th scope="col"style="width: 15%;">Action</th>
+					    </tr>
+					  </thead>
+					  <tbody class="text-center">
 					  
 					  <%
-
 					  	ArrayList<News> news = NewsDao.getAllNews();
 					  	
 					  	for(News news1:news){
-
-					  	
-						ArrayList<News> news = NewsDao.getAllNews();
-				 		
-				 		for(News news1:news){
-
 					  	
 					  		%>
 					  		
 							    <tr style="font-weight: bold;">
-							    <td>
-								     <div class="card mb-3" style="max-width: 640px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img style="height:15vw; object-fit:cover;"src="images/<%= news1.getNewsPhoto() %>"alt="Card image cap" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-      	<p class="card-text">Article Id:<small class="text-muted" style="font-size:15px;"><b><%= news1.getNewsId() %></b></small></p>
-        <p class="card-text">Author Id:<small class="text-muted" style="font-size:15px;"><b><%= news1.getNewsAuthorID()%></b></small></p>
-        <h5 class="card-title">Article Heading:</h5> <h6><%= news1.getNewsHeading() %></h6>
-        <br>
-        <h5>Description:</h5><p class="card-text"><%= news1.getNewsDescription() %></p>  
-        <h5>Full Article:</h5><h6><%= news1.getNewsArticle() %></h6>
-        <a href="#newsDetailsEdit"
+								      <td><%= news1.getNewsId() %></td>
+								      <td><%= news1.getNewsAuthorID() %></td>
+								       <td><%= news1.getNewsHeading() %></td>
+								        <td><%= news1.getNewsDescription() %></td>
+								         <td><%= news1.getNewsPhoto() %></td>
+					      			  <td>
+									<a href="#newsDetailsEdit"
 														
 											data-newsid="<%= news1.getNewsId() %>"
 											data-newsauthorid="<%= news1.getNewsAuthorID() %>"
 											data-newsheading="<%= news1.getNewsHeading() %>"
 											data-newsdescription="<%= news1.getNewsDescription() %>"
-
-											data-newsarticle="<%= news1.getNewsArticle() %>"
 											data-newsphoto="<%= news1.getNewsPhoto() %>"
-
-											data-newsphoto="<%= news1.getNewsPhoto() %>"
-											data-newsarticle="<%= news1.getNewsArticle() %>"
-
 			
 										 class="btn btn-warning mr-2" type="button" data-toggle="modal" data-target="#newsModal"><i class="fas fa-pen"></i></a>
 										 <a href="#" onclick="getNewsIDDelete(<%= news1.getNewsId() %>)" class="btn btn-danger " type="button" ><i class="far fa-trash-alt"></i></a>
-      </div>
-    </div>
-  </div>
-</div>
-				</td>				     
+							
+																		
+					 			     </td>
 							    </tr>
 					  		
 					  		
@@ -149,12 +112,7 @@
       </div>
       <div class="modal-body">
       
-
         <form id="updateNews" class="border border-secondary needs-validation" novalidate action="UpdateNewsServlet" method="post" enctype="multipart/form-data">
-
-        <form id="updateNews" class="border border-secondary needs-validation" novalidate 
-        action="UpdateNewsServlet" method="post" enctype="multipart/form-data">
-
 		<br>
 		<div class="input-group mb-3">
 		  <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;" >Article ID</span>
@@ -173,41 +131,17 @@
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Article Heading</span>
   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" 
-
   		name="newsHeading" id="news_heading" value="news_heading"required>
-
-  		name="newsHeading" id="news_heading" value="news_heading"required="required">
-
      <div class="invalid-tooltip">
         Please provide the Article Heading.
       </div>
 </div>
 <div class="input-group">
   <span class="input-group-text" style="width:150px;">Description</span>
-
   <textarea type="text" class="form-control" aria-label="With textarea"
-
-  <textarea class="form-control" aria-label="With textarea"
-
   name="newsDescription" id="news_description" value="news_description" required></textarea>
       <div class="invalid-tooltip">
         Please provide the Article description.
-      </div>
-</div>
-
-<div class="input-group">
-  <span class="input-group-text" style="width:150px;">Article</span>
-  <textarea type="text" class="form-control" aria-label="With textarea"
-  name="newsArticle" id="news_article" value="news_article" required></textarea>
-
-<br>
-<div class="input-group">
-  <span class="input-group-text" style="width:150px;">Article</span>
-  <textarea class="form-control" aria-label="With textarea" 
-  name="newsArticle" id="news_article" value="news_article" required="required"></textarea>
-
-      <div class="invalid-tooltip">
-        Please provide the Article.
       </div>
 </div>
 <br>
@@ -222,7 +156,7 @@
  <div class="container bg-light">
         <div class="col-md-12 text-center">
             <button type="submit" class="btn btn-success" style="width:150px; text-align: center;">Update</button>
-            <a href="news2.jsp" class="btn btn-outline-dark" style="width:150px; text-align:data-dismiss="modal" center;">Close</a>               
+            <a href="news.jsp" class="btn btn-outline-dark" style="width:150px; text-align:data-dismiss="modal" center;">Close</a>               
         </div>
  </div>
  <br>
@@ -245,11 +179,7 @@
 <script>
 
 
-
 //edit camp category
-
-//Update News category
-
 
 $(document).on("click", "a[href='#newsDetailsEdit']", function () {
 	
@@ -257,27 +187,13 @@ $(document).on("click", "a[href='#newsDetailsEdit']", function () {
     var newsAuthorId = $(this).data('newsauthorid');
     var newsHeading = $(this).data('newsheading');
     var newsDescription = $(this).data('newsdescription');
-
     var newsPhoto = $(this).data('newsphoto');
-    var newsArticle=$(this).data('data-newsarticle');
-
-    var newsArticle=$(this).data('newsarticle');
-    var newsPhoto = $(this).data('newsphoto');
-   
-
     
     $(".modal-body #news_id").val( newsId );
     $(".modal-body #news_author_id").val( newsAuthorId );
     $(".modal-body #news_heading").val( newsHeading );
     $(".modal-body #news_description").val( newsDescription);
-
     $(".modal-body #news_photo").val( newsPhoto );
-    $(".modal-body #news_article").val( newsArticle );
-
-    $(".modal-body #news_article").val( newsArticle );
-    $(".modal-body #news_photo").val( newsPhoto );
-   
-
 	
 	});
 
@@ -285,11 +201,7 @@ $(document).on("click", "a[href='#newsDetailsEdit']", function () {
 
 <script>
 
-
 //edit camp category
-
-//Update News category
-
 
 $(document).ready(function (e) {
 	
@@ -329,7 +241,7 @@ $(document).ready(function (e) {
 								
 								new swal("Good job!", "Update Successfully!", "success")
 								.then((value) => {
-								  window.location="news2.jsp"
+								  window.location="news1.jsp"
 								});
 								
 							}else{
@@ -358,11 +270,7 @@ $(document).ready(function (e) {
 	
 });//end main
 
-
 //end of edit camp category
-
-//end of update news category
-
 
 
 </script>
@@ -402,7 +310,7 @@ function getNewsIDDelete(newsid) {
 								
 									if(data.trim() == "done"){
 									
-											window.location="news2.jsp"
+											window.location="news1.jsp"
 										
 									}else{
 										swal(data);
@@ -426,26 +334,7 @@ function getNewsIDDelete(newsid) {
 }//fun end
 </script>
 
- <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script>
+
 
 
 </body>

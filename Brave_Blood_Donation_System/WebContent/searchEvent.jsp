@@ -24,35 +24,7 @@
 
 <body>
 <h1 style="color:red;font-family:Helvetica, sans-serif; font-size: 100px;">EVENTS</h1>
-
-		<div class="col-md-6 mb-4">
-      		<div class="input-group md-form form-sm form-2 pl-0">
-        		<input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search">
-        			<div class="input-group-append">
-          				<span class="input-group-text amber lighten-3" id="basic-text1"><i class="fas fa-search text-grey" aria-hidden="true"></i></span>
-           				<a href="addEvent.jsp" class="btn btn-danger" style="background: #bb372d;">Add New Event </a>                                                                  
-        			</div>
-      		</div>
-    	</div>
-
-<form  action="searchEventMain.jsp" method="post" >
-		<div class="col-md-6 mb-4">
-      		<div class="input-group md-form form-sm form-2 pl-0">
-        		<input class="form-control my-0 py-1 amber-border" type="text" 
-        		placeholder="Search" aria-label="Search" name="searchData" id="searchData">
-        			<div class="input-group-append" >
-          				 <Button class="btn btn-success" style="width: 80px; margin-right:10px;">Search</Button>  
-           				<a href="addEvent.jsp" class="btn btn-danger" style="background: #bb372d;">Add New Event </a>  
-           				<a href="adminPanel.jsp" class="btn btn-warning" style="margin-left:10px;width:80px;">Back </a>                                                                 
-        			</div>
-      		</div>
-    	</div>
-    	</form>
-
 	<br>
-
-
-
 	<div class="container table-area">
 		  	
 			  	<table  id="eventTable">
@@ -60,9 +32,10 @@
 					  <tbody >
 					  
 					  <%
-					  	ArrayList<Event> event = EventDao.getAllEvent();
+					  	String eventAuthorID= request.getParameter("searchData");
+						List<Event> searchEvent = EventDao.getSearchEvent(eventAuthorID);
 					  	
-					  	for(Event event1:event){
+					  	for(Event event1:searchEvent){
 					  	
 					  		%>
 					  		
@@ -97,7 +70,7 @@
 										 	class="btn btn-warning mr-2" type="button" data-toggle="modal" data-target="#eventModal"><i class="fas fa-pen"></i></a>
 										 	<a href="#" onclick="getEventIDDelete(<%=event1.getEventId() %>)"
 										 	 class="btn btn-danger " type="button" ><i class="far fa-trash-alt"></i></a>												
-											
+											<a href="event2.jsp" class="btn btn-success" style="margin-left:10px;" type="button"><i class="fas fa-angle-left fa-lg"></i></a>
       									</div>
     								</div>
   								</div>

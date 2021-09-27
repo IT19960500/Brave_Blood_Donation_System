@@ -6,7 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 import com.braveBloodDonation.entities.ContactUs;
+
+import java.util.List;
+
+import com.braveBloodDonation.entities.ContactUs;
+import com.braveBloodDonation.entities.News;
+
 import com.braveBloodDonation.helper.connectionProvider;
 
 public class ContactUsDao {
@@ -190,4 +197,49 @@ public class ContactUsDao {
 			
 		}
 		
+
+		public static List<ContactUs>getSearchNews(int contactUsId){
+			List<ContactUs> list = new ArrayList<>();
+			try {
+			
+				//get our dbconnection
+				Connection con = connectionProvider.getConnection();
+				
+				//create sql query
+				String sql = "SELECT * FROM contactus WHERE contactUsId LIKE '%"+contactUsId+"%'";    
+						
+				//cerate statment
+				java.sql.PreparedStatement stmt = con.prepareStatement(sql);
+
+				
+				//execute the query
+				ResultSet rs = stmt.executeQuery();
+				
+				//get details from db
+				while (rs.next()) {
+					
+
+					int contactUsId1 = rs.getInt("contactUsId");
+					String contactUsQusType = rs.getString("contactUsQusType");
+					String contactUsQus=rs.getString("contactUsQus");
+					String contactUsName=rs.getString("contactUsName");
+					String contactUsEmail=rs.getString("contactUsEmail");
+					String contactUsPhone=rs.getString("contactUsPhone");
+					String contactusStatus=rs.getString("contactusStatus");
+					
+					//create an object docCategory class
+					ContactUs  contactUs = new ContactUs(contactUsId1,contactUsQusType,contactUsQus,contactUsName,contactUsEmail,contactUsPhone,contactusStatus);
+					//set value into arrayList
+					list.add(contactUs);
+					
+				}
+				
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			return list;
+		}
+		
+
 }

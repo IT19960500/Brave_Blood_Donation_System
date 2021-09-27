@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import java.util.List;
+
 
 import com.braveBloodDonation.entities.Health;
 import com.braveBloodDonation.helper.connectionProvider;
@@ -224,5 +226,47 @@ public class HealthDao {
 		
 		return health;
 	}
+
+	
+	public static List<Health>getSearchNews(String healthAuthorID){
+		List<Health> list = new ArrayList<>();
+		try {
+		
+			//get our dbconnection
+			Connection con = connectionProvider.getConnection();
+			
+			//create sql query
+			String sql = "SELECT * FROM health WHERE healthAuthorID LIKE '%"+healthAuthorID+"%'";    
+					
+			//cerate statment
+			java.sql.PreparedStatement stmt = con.prepareStatement(sql);
+
+			
+			//execute the query
+			ResultSet rs = stmt.executeQuery();
+			
+			//get details from db
+			while (rs.next()) {
+				int healthId = rs.getInt("healthId");
+				String healthAuthorID1 = rs.getString("healthAuthorID");
+				String healthHeading=rs.getString("healthHeading");
+				String healthDescription=rs.getString("healthDescription");
+				String healthPhoto=rs.getString("healthPhoto");
+				String healthArticle=rs.getString("healthArticle");
+				
+				//create an object docCategory class
+				Health  health = new Health(healthId,healthAuthorID1,healthHeading,healthDescription,healthPhoto,healthArticle);
+				//set value into arrayList
+				list.add(health);
+				
+			}
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 
 }

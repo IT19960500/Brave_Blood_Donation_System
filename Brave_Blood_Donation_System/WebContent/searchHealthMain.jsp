@@ -46,7 +46,7 @@
 			<div class="container mt-3">
 				
 					<!-- include notice managemet admin page -->
- 					<%@ include file = "EventFile.jsp" %>
+ 					<%@ include file = "searchHealth.jsp" %>
  					
 										
 			</div>
@@ -55,9 +55,7 @@
 	
 	
 	
-
-	</div>
-
+	
 	
 	
 	

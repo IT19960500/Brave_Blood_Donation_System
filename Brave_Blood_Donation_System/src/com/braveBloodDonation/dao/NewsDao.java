@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import java.util.List;
+
 
 import com.braveBloodDonation.entities.News;
 import com.braveBloodDonation.helper.connectionProvider;
@@ -219,10 +221,14 @@ public class NewsDao {
 				news.setNewsHeading(rs.getString("newsHeading"));
 				news.setNewsDescription(rs.getString("newsDescription"));
 				news.setNewsPhoto(rs.getString("newsPhoto"));
+
 				news.setNewsArticle(rs.getString("newsArticle"));
 				
 				
 				
+
+				news.setNewsArticle(rs.getString("newsArticle"));	
+
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -231,6 +237,46 @@ public class NewsDao {
 		return news;
 	}
 	
-	
+
+	public static List<News>getSearchNews(String newsAuthorID){
+		List<News> list = new ArrayList<>();
+		try {
+		
+			//get our dbconnection
+			Connection con = connectionProvider.getConnection();
+			
+			//create sql query
+			String sql = "SELECT * FROM news WHERE newsAuthorID LIKE '%"+newsAuthorID+"%'";    
+					
+			//cerate statment
+			java.sql.PreparedStatement stmt = con.prepareStatement(sql);
+
+			
+			//execute the query
+			ResultSet rs = stmt.executeQuery();
+			
+			//get details from db
+			while (rs.next()) {
+				
+				int newsId = rs.getInt("newsId");
+				String newsAuthorID2 = rs.getString("newsAuthorID");
+				String newsHeading=rs.getString("newsHeading");
+				String newsDescription=rs.getString("newsDescription");
+				String newsPhoto=rs.getString("newsPhoto");
+				String newsArticle=rs.getString("newsArticle");
+				
+				//create an object docCategory class
+				News  news = new News(newsId,newsAuthorID2,newsHeading,newsDescription,newsPhoto,newsArticle);
+				//set value into arrayList
+				list.add(news);
+			}
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 	
 }

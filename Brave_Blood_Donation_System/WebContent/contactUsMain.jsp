@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 
-	<title>Admin Panel</title>
+	<title>admin panel</title>
 	
 	<!-- boostrap cdn -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -33,31 +33,36 @@
 		  <button class="tablinks" onclick="openCity(event, 'userManagment')" >User Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'appintmentManagement')">Appointment Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'donationCampManagement')">Donation Camp Management</button>
-		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')" id="defaultOpen">Notice Management</button>
-		  <button class="tablinks" onclick="openCity(event, 'contactUsManagement')">ContactUs Management </button>
-		</div>
+		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')">Notice Management</button>
+		  <button class="tablinks" onclick="openCity(event, 'contactUsManagement')"id="defaultOpen">ContactUs Management </button>
+
+				
 		
-	
+		</div>
 	
 
-		<!-- Notice Camp management -->
-		<div id="noticeManagement" class="tabcontent border-light">
+		<!-- ContactUsp management -->
+		<div id="contactUsManagement" class="tabcontent border-light">
 		
-			<div class="container mt-3">
-				
-					<!-- include notice managemet admin page -->
- 					<%@ include file = "EventFile.jsp" %>
- 					
-										
-			</div>
+		  	<div> 
+		 
+		 		<!-- include contactUs managemet admin page -->
+ 					<%@ include file = "contactUsManagementAdmin.jsp" %>
+					
+		  	</div>
+						
+		</div>
+		<!-- //ContactUs management-->
+
+
+
+
 
 	</div>		
 	
 	
 	
-
-	</div>
-
+	
 	
 	
 	

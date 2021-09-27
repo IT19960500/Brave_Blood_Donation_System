@@ -34,6 +34,7 @@ public class UpdateNewsServlet extends HttpServlet {
 				String newsDescription= request.getParameter("newsDescription");
 				String newsArticle=request.getParameter("newsArticle");
 				Part part = request.getPart("newsPhoto"); 
+
 				System.out.println(newsHeading);
 				
 		
@@ -57,7 +58,11 @@ public class UpdateNewsServlet extends HttpServlet {
 				//set real file path our img file
 				FileOutputStream fos = new FileOutputStream(folderPath);		
 				
+
 				//write the image in img folader
+
+				//write the image in img folder
+
 				fos.write(data);
 				fos.flush();
 				fos.close();

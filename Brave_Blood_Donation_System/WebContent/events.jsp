@@ -24,7 +24,6 @@
 
 <body>
 <h1 style="color:red;font-family:Helvetica, sans-serif; font-size: 100px;">EVENTS</h1>
-
 		<div class="col-md-6 mb-4">
       		<div class="input-group md-form form-sm form-2 pl-0">
         		<input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search">
@@ -34,30 +33,24 @@
         			</div>
       		</div>
     	</div>
-
-<form  action="searchEventMain.jsp" method="post" >
-		<div class="col-md-6 mb-4">
-      		<div class="input-group md-form form-sm form-2 pl-0">
-        		<input class="form-control my-0 py-1 amber-border" type="text" 
-        		placeholder="Search" aria-label="Search" name="searchData" id="searchData">
-        			<div class="input-group-append" >
-          				 <Button class="btn btn-success" style="width: 80px; margin-right:10px;">Search</Button>  
-           				<a href="addEvent.jsp" class="btn btn-danger" style="background: #bb372d;">Add New Event </a>  
-           				<a href="adminPanel.jsp" class="btn btn-warning" style="margin-left:10px;width:80px;">Back </a>                                                                 
-        			</div>
-      		</div>
-    	</div>
-    	</form>
-
 	<br>
 
 
 
 	<div class="container table-area">
 		  	
-			  	<table  id="eventTable">
-				
-					  <tbody >
+			  	<table class="table table-hover" id="eventTable">
+					  <thead  class=" text-center" style="font-weight: bold; background:#bb372d; color: white;">
+					    <tr>
+					      <th scope="col">Event ID</th>
+					      <th scope="col">AuthorID</th>
+					       <th scope="col">EventHeading</th>
+					        <th scope="col">EventDescription</th>
+					         <th scope="col">EventPhoto</th>
+					      <th scope="col" style="width: 15%;">Action</th>
+					    </tr>
+					  </thead>
+					  <tbody class="text-center">
 					  
 					  <%
 					  	ArrayList<Event> event = EventDao.getAllEvent();
@@ -67,44 +60,28 @@
 					  		%>
 					  		
 							    <tr style="font-weight: bold;">
-							    						    <td>
-								     <div class="card mb-3" style="max-width: 640px;">
-  										<div class="row g-0">
-    										<div class="col-md-4">
-      											<img style="height:15vw; object-fit:cover;"src="images/<%= event1.getEventPhoto() %>"
-      											alt="Card image cap" class="img-fluid rounded-start" alt="...">
-    										</div>
-    								<div class="col-md-8">
-      									<div class="card-body">
-      										<p class="card-text">Event Id:<small class="text-muted" style="font-size:15px;"><b><%= event1.getEventId() %></b></small></p>
-        									<p class="card-text">Author Id:<small class="text-muted" style="font-size:15px;"><b><%= event1.getEventAuthorID() %></b></small></p>
-        									<h5 class="card-title">Article Heading:</h5><h6><%= event1.getEventHeading()  %></h6>
-        									<br>
-        									<h5>Description:</h5><p class="card-text"><%= event1.getEventDescription() %></p>
-        									<h5>Article:</h5><p class="card-text"><%= event1.getEventArticle() %></p>
-         									
-        
-        
-											<a href="#eventDetailsEdit"
+								      <td><%= event1.getEventId() %></td>
+								      <td><%= event1.getEventAuthorID() %></td>
+								       <td><%= event1.getEventHeading()  %></td>
+								        <td><%= event1.getEventDescription() %></td>
+								         <td><%= event1.getEventPhoto() %></td>
+					      			  <td>
+									<a href="#eventDetailsEdit"
 														
 											data-eventid="<%= event1.getEventId() %>"
 											data-eventauthorid="<%= event1.getEventAuthorID() %>"
 											data-eventheading="<%= event1.getEventHeading() %>"
 											data-eventdescription="<%= event1.getEventDescription() %>"
 											data-eventphoto="<%= event1.getEventPhoto() %>"
-											data-eventarticle="<%= event1.getEventArticle() %>"
 			
-										 	class="btn btn-warning mr-2" type="button" data-toggle="modal" data-target="#eventModal"><i class="fas fa-pen"></i></a>
-										 	<a href="#" onclick="getEventIDDelete(<%=event1.getEventId() %>)"
-										 	 class="btn btn-danger " type="button" ><i class="far fa-trash-alt"></i></a>												
-											
-      									</div>
-    								</div>
-  								</div>
-							</div>
-						</td>     
-					</tr>
-
+										 class="btn btn-warning mr-2" type="button" data-toggle="modal" data-target="#eventModal"><i class="fas fa-pen"></i></a>
+										 <a href="#" onclick="getEventIDDelete(<%=event1.getEventId() %>)" class="btn btn-danger " type="button" ><i class="far fa-trash-alt"></i></a>
+							
+																		
+					 			     </td>
+							    </tr>
+					  		
+					  		
 					  		<%
 					  	}
 					  %>
@@ -161,15 +138,6 @@
       </div>
 </div>
 <br>
-<div class="input-group">
-  <span class="input-group-text" style="width:150px;">Article</span>
-  <textarea class="form-control" aria-label="With textarea" 
-  name="eventArticle" id="event_article" value="event_article" required></textarea>
-      <div class="invalid-tooltip">
-        Please provide the Article.
-      </div>
-</div>
-<br>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Upload Image</span>
   <input class="form-control" type="file" name="eventPhoto" id="event_photo" value="event_photo"required>
@@ -181,7 +149,7 @@
  <div class="container bg-light">
         <div class="col-md-12 text-center">
             <button type="submit" class="btn btn-success" style="width:150px; text-align: center;">Update</button>
-            <a href="event2.jsp" class="btn btn-outline-dark" style="width:150px; text-align: center;">Close</a>               
+            <a href="events.jsp" class="btn btn-outline-dark" style="width:150px; text-align: center;">Close</a>               
         </div>
  </div>
  <br>
@@ -212,17 +180,13 @@ $(document).on("click", "a[href='#eventDetailsEdit']", function () {
     var eventAuthorId = $(this).data('eventauthorid');
     var eventHeading = $(this).data('eventheading');
     var eventDescription = $(this).data('eventdescription');
-    var eventArticle= $(this).data('eventarticle');
     var eventPhoto = $(this).data('eventphoto');
-   
     
     $(".modal-body #event_id").val( eventId );
     $(".modal-body #event_author_id").val( eventAuthorId );
     $(".modal-body #event_heading").val( eventHeading );
     $(".modal-body #event_description").val( eventDescription);
-    $(".modal-body #event_article").val( eventArticle );
     $(".modal-body #event_photo").val( eventPhoto );
-   
 	
 	});
 
@@ -270,7 +234,7 @@ $(document).ready(function (e) {
 								
 								new swal("Good job!", "Update Successfully!", "success")
 								.then((value) => {
-								  window.location="event2.jsp"
+								  window.location="event1.jsp"
 								});
 								
 							}else{
@@ -337,7 +301,7 @@ function getEventIDDelete(eventid) {
 								
 									if(data.trim() == "done"){
 									
-											window.location="event2.jsp"
+											window.location="event1.jsp"
 										
 									}else{
 										swal(data);
@@ -360,26 +324,7 @@ function getEventIDDelete(eventid) {
 	
 }//fun end
 </script>
- <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script>
+
 	  	
 </body>
 </html>
