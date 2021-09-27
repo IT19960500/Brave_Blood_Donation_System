@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 
-	<title>Admin Panel</title>
+	<title>admin panel</title>
 	
 	<!-- boostrap cdn -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -30,134 +30,26 @@
 	<div class="container" style="max-width: 5000px">
 		
 		<div class="tab adminTab">
-
 		  <button class="tablinks" onclick="openCity(event, 'userManagment')" >User Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'appintmentManagement')">Appointment Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'donationCampManagement')">Donation Camp Management</button>
-		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')"id="defaultOpen">Notice Management</button>
-
-		  <button class="tablinks" onclick="openCity(event, 'userManagment')">User Management</button>
-		  <button class="tablinks" onclick="openCity(event, 'appintmentManagement')">Appointment Management</button>
-		  <button class="tablinks" onclick="openCity(event, 'donationCampManagement')">Donation Camp Management</button>
-		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')"id="defaultOpen" >Notice Management</button>
-
+		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')" id="defaultOpen">Notice Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'contactUsManagement')">ContactUs Management </button>
 		</div>
 		
-		
-		<!-- user management -->
-		<div id="userManagment" class="tabcontent border-light">
-		
-					  
-		  	<div class="container mt-3"> 
-		 
-		 			<!-- include user managemet admin page -->
- 					<%@ include file = "userManagementAdmin.jsp" %>
-					
-		  	</div>
-			
-			
-			
-		</div>
-		<!-- //user management -->
-		
-
-
-
-
-		<!-- appointment management -->
-		<div id="appintmentManagement" class="tabcontent border-light">
-		
-			<div class="container mt-3">
-				
-					<!-- include appointmnet managemet admin page -->
- 					<%@ include file = "appointmentManagementAdmin.jsp" %>
-										
-			</div>
-		  
-						
-		</div>
-		<!-- //appointment management -->
-
-
-
-		<!-- Donation Camp management -->
-		<div id="donationCampManagement" class="tabcontent border-light">
-		
-			<div class="container mt-3">
-				
-					<div class="container mt-3">
-				
-					<!-- include appointmnet managemet admin page -->
- 					<%@ include file = "donationCampManagementAdmin.jsp" %>
-										
-			</div>
-										
-			</div>
-		  
-		
-		</div>
-		<!-- //Donation Camp management-->
-
-
+	
+	
 
 		<!-- Notice Camp management -->
 		<div id="noticeManagement" class="tabcontent border-light">
 		
-
-			
-		  
-		  	<div class="container mt-3"> 
-		 
-		 		
-					<!-- include notice managemet admin page -->
- 					<%@ include file = "noticeManagementAdmin.jsp" %>
-		  	</div>
-
 			<div class="container mt-3">
 				
 					<!-- include notice managemet admin page -->
- 					<%@ include file = "noticeManagementAdmin.jsp" %>
+ 					<%@ include file = "health.jsp" %>
  					
 										
 			</div>
-		  
-	
-
-						
-		</div>
-		<!-- //Notice Camp management-->
-
-
-
-		<!-- ContactUsp management -->
-		<div id="contactUsManagement" class="tabcontent border-light">
-		
-
-			
-		  
-		  	<div class="container mt-3"> 
-		 
-		 		<!-- include contactUs managemet admin page -->
- 					<%@ include file = "contactUsManagementAdmin.jsp" %>
-					
-		  	</div>
-
-			<div class="container mt-3">
-			
-			<!-- include contactUs managemet admin page -->
- 					<%@ include file = "contactUsManagementAdmin.jsp" %>
-										
-			</div>
-		
-
-						
-		</div>
-		<!-- //ContactUs management-->
-
-
-
-
 
 	</div>		
 	
