@@ -71,6 +71,9 @@
 					      <th scope="col">Approved/ Rejected</th>
 					      <th scope="col" style="width:15%;">Action</th>
 
+
+					     
+
 					    </tr>
 					  </thead>
 					  <tbody class="text-center">
@@ -104,6 +107,11 @@
 										 <a href="#" onclick="getContactUsIDDelete(<%= contactUs1.getContactUsId() %>)" class="btn btn-danger "
 										  type="button" ><i class="far fa-trash-alt"></i></a>
 										 
+
+
+										 <a href="#" onclick="getContactUsIDDelete(<%= contactUs1.getContactUsId() %>)" class="btn btn-danger " type="button" ><i class="far fa-trash-alt"></i></a>
+							
+
 
 																		
 					 			     </td>
@@ -141,6 +149,9 @@
 
         <form id="updateContactUs" class="border border-secondary needs-validation" 
          action="UpdateContactUsServlet" method="post" enctype="multipart/form-data">
+
+        <form id="updateContactUs" class="border border-secondary needs-validation" novalidate action="UpdateContactUsServlet" method="post" enctype="multipart/form-data">
+
 	<br>
 <h4>Update ContactUs</h4>
 <div class="input-group mb-3">
@@ -160,16 +171,32 @@
       <option>Requirements to be a blood donor</option>
     </select>
 
+
+  <div class="invalid-tooltip">
+        Please provide the question type.
+      </div>
+
 </div>
 <div class="input-group">
   <span class="input-group-text" style="width:150px;">Question</span>
   <textarea class="form-control" name="contactUsQus" id="contactus_qus" value="contactus_qus" aria-label="With textarea" required></textarea>
+
+
+      <div class="invalid-tooltip">
+        Please ask your question.
+      </div>
 
 </div>
 <br>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Name</span>
   <input type="text" class="form-control" name="contactUsName" id="contactus_name" value="contactus_name"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+
+
+  <div class="invalid-tooltip">
+        Please provide your name.
+      </div>
+
 
 </div>
 <div class="input-group mb-3">
@@ -180,10 +207,12 @@
   <div class="invalid-tooltip">
         Please provide your name.
       </div>
+
 </div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">E-mail</span>
   <input type="email" class="form-control" name="contactUsEmail" id="contactus_email" value="contactus_email"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+
      <div class="invalid-tooltip">
         Please provide your email address.
       </div>
@@ -193,10 +222,17 @@
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Phone</span>
 
+  <input type="phone" class="form-control" name="contactUsPhone" id="contactus_phone" value="contactus_phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+
+     <div class="invalid-tooltip">
+        Please provide your mobile number.
+      </div>
+
+
   <input type="tel" pattern="[0-9]{3}-[0-9]{7}" placeholder="123-4567890" class="form-control" name="contactUsPhone" id="contactus_phone" value="contactus_phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
 
 
-    
+
 
 </div>
 <div class="input-group mb-3">
@@ -311,6 +347,7 @@ $(document).ready(function (e) {
 
 								  window.location="contactUsMain.jsp"
 
+
 								});
 								
 							}else{
@@ -382,6 +419,7 @@ function getContactUsIDDelete(contactusid) {
 
 											window.location="contactUsMain.jsp"
 
+
 										
 									}else{
 										swal(data);
@@ -405,10 +443,44 @@ function getContactUsIDDelete(contactusid) {
 }//fun end
 </script>
 
- 
+
 
 <script>
 $("#btnExport1").on("click", function () {
+
+ <script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
+
+
+
+
+<script>
+
+
+
+<script>
+
+$("#btnExport").on("click", function () {
+
 
 	html2canvas($('#contactUsTable')[0], {
       onrendered: function (canvas) {

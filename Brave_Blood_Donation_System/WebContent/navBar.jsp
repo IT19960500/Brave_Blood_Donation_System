@@ -46,6 +46,13 @@
       </li>
 
      <li class="nav-item" style="font-weight: bold;">
+
+        <a class="nav-link" href="#"><span><i class="fas fa-notes-medical"></i></span> NOTICE</a>
+      </li>
+
+     <li class="nav-item" style="font-weight: bold;">
+        <a class="nav-link" href="#"><span><i class="fas fa-address-book"></i></span> CONTACT</a>
+
       <div class="dropdown">
        <a class="nav-link" href="#"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <span><i class="fas fa-notes-medical"></i></span> NOTICE
@@ -60,6 +67,7 @@
 
      <li class="nav-item" style="font-weight: bold;">
         <a class="nav-link" href="addContactUs.jsp"><span><i class="fas fa-address-book"></i></span> CONTACT</a>
+
       </li>
     
   
