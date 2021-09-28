@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -20,6 +21,14 @@
 <script src="https://kit.fontawesome.com/2a0f6dfc30.js"
 	crossorigin="anonymous"></script>
 
+<style>
+input[type="radio"] {
+	-ms-transform: scale(2); /* IE 9 */
+	-webkit-transform: scale(2); /* Chrome, Safari, Opera */
+	transform: scale(2);
+}
+</style>
+
 <!-- css -->
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/headerStyle.css" type="text/css" />
@@ -32,9 +41,9 @@
 </head>
 <body>
 
-	<%@ include file = "header.jsp" %>
+	<%@ include file="header.jsp"%>
 
-	<%@ include file = "navBar.jsp" %>
+	<%@ include file="navBar.jsp"%>
 
 	<h3 style="text-align: center">Before you register as a blood
 		donor</h3>
@@ -56,50 +65,50 @@
 		</ul>
 	</div>
 
-	<div class="questions" style="margin-left:270px; margin-top:100px; margin-bottom:100px;padding-top: 30px; padding-bottom: 30px; width: 70%; border: 3px double #bb372d; border-width: thick">
-		<form action="" onsubmit="return check()">
-		<div style="margin-left: 200px">
-			
-			<b>1. Are you 16-65 years old?</b>
-			<br>
-			<input type="radio" name="q1" value="Yes">Yes
-			<input type="radio" name="q1" value="No">No
-			<br><br>
-						
-			<b>2. Do you currently weigh less than 50kg (7 stone 12 pounds)?</b>
-				<br><br>
-			<input type="radio" name="q2" value="Yes">Yes
-			<input type="radio" name="q2" value="No">No
-			<br>
+	<div class="questions"
+		style="margin-left: 270px; margin-top: 100px; margin-bottom: 100px; padding-top: 30px; padding-bottom: 30px; width: 70%; border: 3px double #bb372d; border-width: thick">
+		<form action="" data-req="1"  onsubmit="return check()">
+			<div class="radBL"  style="margin-left: 200px">
 
-			<b>3. Have you had a blood or blood product transfusion since
-					1st January 1980?</b>
+				<b>1. Are you 16-65 years old?</b> <br>
+				<br> <input type="radio" style="margin-left: 20px;" name="q1"
+					value="Yes"><b>&nbsp;&nbsp;Yes</b> <input type="radio"
+					style="margin-left: 20px;" name="q1" value="No"><b>&nbsp;&nbsp;No</b>
+				<br> <br>
+				
+				 <b>2. Do you currently weigh less than 50kg
+					(7 stone 12 pounds)?</b> <br> <br> <input type="radio"
+					style="margin-left: 20px;" name="q2" value="Yes"><b>&nbsp;&nbsp;Yes</b> <input
+					type="radio" name="q2" style="margin-left: 20px;" value="No"><b>&nbsp;&nbsp;No</b>
+				<br><br> 
+				
+				<b>3. Have you had a blood or blood product
+					transfusion since 1st January 1980?</b> <br> <br> <input
+					type="radio" style="margin-left: 20px;" name="q3" value="Yes"><b>&nbsp;&nbsp;Yes</b>
+				<input type="radio" style="margin-left: 20px;" name="q3" value="No"><b>&nbsp;&nbsp;No</b>
 				<br><br>
-			<input type="radio" name="q3" value="Yes">Yes
-			<input type="radio" name="q3" value="No">No
-			<br>
-			
-			<b>4. Have you received donated eggs or embryos since 1st
-				January 1980?</b>
-				<br><br>
-			<input type="radio" name="q4" value="Yes">Yes
-			<input type="radio" name="q4" value="No">No
-			<br>
-		
-			<b>5. Have you ever had a cancer other than basal cell carcinoma
-				or cervical carcinoma insitu (CIN)?</b>
-				<br><br>
-			<input type="radio" name="q5" value="Yes">Yes
-			<input type="radio" name="q5" value="No">No
-			<br>
-			
+				
+				 <b>4. Have you received donated eggs or embryos since
+					1st January 1980?</b> <br> <br> <input type="radio"
+					style="margin-left: 20px;" name="q4" value="Yes"><b>&nbsp;&nbsp;Yes</b> <input
+					type="radio" style="margin-left: 20px;" name="q4" value="No"><b>&nbsp;&nbsp;No</b>
+				<br><br> 
+				
+				<b>5. Have you ever had a cancer other than basal cell
+					carcinoma or cervical carcinoma insitu (CIN)?</b> <br> <br> <input
+					type="radio" style="margin-left: 20px;" name="q5" value="Yes"><b>&nbsp;&nbsp;Yes</b>
+				<input type="radio" style="margin-left: 20px;" name="q5" value="No"><b>&nbsp;&nbsp;No</b>
+				<br>
+
 			</div>
-			<button type="button" onclick="checkResult()" style="margin-top:50px; margin-left:400px "class="btn btn-outline-dark">Submit</button>
+			<button type="button" id="btn1" onclick="checkResult()"
+				style="margin-top: 50px; margin-left: 400px"
+				class="btn btn-outline-dark">Submit</button>
 		</form>
 	</div>
-	<div id="result"></div>
-	<%@ include file = "footer.jsp" %>
-	
+	<div id="result1"></div>
+	<%@ include file="footer.jsp"%>
+
 	<!-- jquery script -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -117,25 +126,58 @@
 	<script type="text/javascript" src="js/script.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript" src="js/editdata.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
-		function checkResult(){
-			document.getElementById("result").innerHTML = "";
-		
+		function checkResult() {
+			
 			var ele = document.getElementsByTagName('input');
-			for(i = 0; i < ele.length; i++) {
+			
+			for (i = 0; i < ele.length; i++) {
 				
-				if(ele[i].type="radio") {
+				}								
 				
-					if(ele[i].checked)
-						document.getElementById("result").innerHTML
-								+= ele[i].name + " Value: "
-								+ ele[i].value + "<br>";
-				}			
-		}
-		}
-	
-	</script>
+			if (ele[1].checked && ele[4].checked && ele[6].checked && ele[8].checked && ele[10].checked) {
+				swal({
+					title : "Congratulations!",
+					text : "You are illegible to be a blood donor",
+					type : "success"
 
+				}).then(function() {
+					window.location = "bloodDonorProfileSignup.jsp";
+				});
+			}else {
+				swal("Sorry!", "Thank you. Based on the answers you provided, we advise that you do not register to be a blood donor.", "warning");
+			}
+		}
+	</script>
+	
+<script> 
+
+ 	$(function() {
+		  var requiredRadios = $(".radBL :radio")
+		  requiredRadios.change(function() {
+ 		    var anyNotChecked = requiredRadios.filter(function() {
+	      return $("[name='" + this.name + "']:checked").length === 0
+		    }).get()
+	    console.log(anyNotChecked)
+		    $("#btn1").prop("disabled",anyNotChecked.length!==0)
+ 		  })
+
+
+		})
+
+</script>
+
+<script>
+function atLeastOneRadio() {
+     if(($('input[type=radio]:checked').size() = 0){
+    	 swal("Sorry!", "Thank you", "warning");
+		}
+     }
+    
+}
+
+</script>
 
 </body>
 </html>

@@ -1,18 +1,22 @@
 package com.braveBloodDonation.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.braveBloodDonation.dao.RegisterDao;
-import com.braveBloodDonation.entities.Donor;
+
 
 /**
  * Servlet implementation class Register
  */
+@MultipartConfig
 @WebServlet("/Register")
 public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -46,11 +50,20 @@ public class Register extends HttpServlet {
 		String weight = request.getParameter("weight");
 		String height = request.getParameter("height");
 		
-		Donor donor = new Donor(username,email,phone,address,occupation,weight,height);
+		PrintWriter out = response.getWriter();
 		
-		RegisterDao rDao = new RegisterDao();
-		String result = rDao.insert(donor);
-		response.getWriter().print(result);
+		boolean isTrue = RegisterDao.insert(username, email, phone, address, occupation, weight, height);
+		
+		if(isTrue==true) {
+			
+			out.print("done");
+			
+		}else {
+			
+			out.print("error");
+		}
+		
 	}
+	
 
 }
