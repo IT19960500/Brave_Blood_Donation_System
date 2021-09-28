@@ -25,6 +25,7 @@
 </head>
 <body>
 	<h1 style="color:red;font-family:Helvetica, sans-serif; font-size: 100px;">CONTACT-US</h1>
+
 	<form  action="searchContactUsMain.jsp" method="post" >
 		<div class="col-md-6 mb-4">
       		<div class="input-group md-form form-sm form-2 pl-0">
@@ -40,6 +41,18 @@
       		</div>
     	</div>
     	</form>
+
+		<div class="col-md-6 mb-4">
+      		<div class="input-group md-form form-sm form-2 pl-0">
+        		<input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search">
+        			<div class="input-group-append">
+          				<span class="input-group-text amber lighten-3" id="basic-text1" style="margin-right:10px"><i class="fas fa-search text-grey" aria-hidden="true"></i></span>
+           				<button type="button" class="btn btn-danger"  id="btnExport" style="margin-right:10px;background: #bb372d;" > <span><i class="fas fa-print" ></i> </span>  Generate Report</button>
+           				<a href="addContactUs.jsp" class="btn btn-danger" style="background: #bb372d;">Add New Record</a>                                                                  
+        			</div>
+      		</div>
+    	</div>
+
 	<br>
 	
 	<div class="container table-area">
@@ -54,8 +67,10 @@
 					      <th scope="col">Name</th>
 					      <th scope="col">Email</th>
 					      <th scope="col">Phone</th>
+
 					      <th scope="col">Approved/ Rejected</th>
 					      <th scope="col" style="width:15%;">Action</th>
+
 					    </tr>
 					  </thead>
 					  <tbody class="text-center">
@@ -64,7 +79,6 @@
 					  ArrayList<ContactUs> contactUs = ContactUsDao.getAllContactUs();
 					  	
 					  	for(ContactUs contactUs1:contactUs){
-
 					  		%>
 					  		
 							<tr style="font-weight: bold;">
@@ -86,9 +100,11 @@
 											data-contactusphone="<%= contactUs1.getContactUsPhone() %>"
 											data-contactusstatus="<%=contactUs1.getContactusStatus() %>"
 										 class="btn btn-warning mr-2" type="button" data-toggle="modal" data-target="#contactUsModal"><i class="fas fa-pen"></i></a>
+
 										 <a href="#" onclick="getContactUsIDDelete(<%= contactUs1.getContactUsId() %>)" class="btn btn-danger "
 										  type="button" ><i class="far fa-trash-alt"></i></a>
 										 
+
 																		
 					 			     </td>
 							    </tr>
@@ -122,6 +138,7 @@
       </div>
       <div class="modal-body">
       
+
         <form id="updateContactUs" class="border border-secondary needs-validation" 
          action="UpdateContactUsServlet" method="post" enctype="multipart/form-data">
 	<br>
@@ -142,25 +159,45 @@
       <option>Registration</option>
       <option>Requirements to be a blood donor</option>
     </select>
+
 </div>
 <div class="input-group">
   <span class="input-group-text" style="width:150px;">Question</span>
   <textarea class="form-control" name="contactUsQus" id="contactus_qus" value="contactus_qus" aria-label="With textarea" required></textarea>
+
 </div>
 <br>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Name</span>
   <input type="text" class="form-control" name="contactUsName" id="contactus_name" value="contactus_name"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+
 </div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">E-mail</span>
   <input type="email" class="form-control" name="contactUsEmail" id="contactus_email" 
   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="abc@gmail.com" value="contactus_email"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+
+  <div class="invalid-tooltip">
+        Please provide your name.
+      </div>
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">E-mail</span>
+  <input type="email" class="form-control" name="contactUsEmail" id="contactus_email" value="contactus_email"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+     <div class="invalid-tooltip">
+        Please provide your email address.
+      </div>
+
 </div>
 
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Phone</span>
+
   <input type="tel" pattern="[0-9]{3}-[0-9]{7}" placeholder="123-4567890" class="form-control" name="contactUsPhone" id="contactus_phone" value="contactus_phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+
+
+    
+
 </div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Question Status</span>
@@ -171,7 +208,14 @@
       <option>Approved</option>
       <option>Rejected</option>
     </select>
+
  </div>
+
+  <div class="invalid-tooltip">
+        Please Approve or reject the question.
+      </div>
+</div>
+
 <br>
  <div class="container bg-light">
         <div class="col-md-12 text-center">
@@ -264,7 +308,9 @@ $(document).ready(function (e) {
 								
 								new swal("Good job!", "Update Successfully!", "success")
 								.then((value) => {
+
 								  window.location="contactUsMain.jsp"
+
 								});
 								
 							}else{
@@ -333,7 +379,9 @@ function getContactUsIDDelete(contactusid) {
 								
 									if(data.trim() == "done"){
 									
+
 											window.location="contactUsMain.jsp"
+
 										
 									}else{
 										swal(data);
@@ -356,10 +404,12 @@ function getContactUsIDDelete(contactusid) {
 	
 }//fun end
 </script>
+
  
 
 <script>
 $("#btnExport1").on("click", function () {
+
 	html2canvas($('#contactUsTable')[0], {
       onrendered: function (canvas) {
           var data = canvas.toDataURL();
