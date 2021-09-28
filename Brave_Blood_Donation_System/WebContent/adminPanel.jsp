@@ -36,6 +36,7 @@
 		  <button class="tablinks" onclick="openCity(event, 'donationCampManagement')">Donation Camp Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')"id="defaultOpen">Notice Management</button>
 
+
 		  <button class="tablinks" onclick="openCity(event, 'userManagment')">User Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'appintmentManagement')">Appointment Management</button>
 
@@ -54,6 +55,7 @@
 
 		  <button class="tablinks" onclick="openCity(event, 'donationCampManagement')">Donation Camp Management</button>
 		  <button class="tablinks" onclick="openCity(event, 'noticeManagement')"id="defaultOpen" >Notice Management</button>
+
 
 		  <button class="tablinks" onclick="openCity(event, 'contactUsManagement')">ContactUs Management </button>
 		</div>
@@ -102,8 +104,13 @@
 
 					<div class="container mt-3">
 				
+
+				
 					<!-- include appointmnet managemet admin page -->
  					<%@ include file = "donationCampManagementAdmin.jsp" %>
+										
+			</div>
+
 										
 			</div>
 										
@@ -121,13 +128,7 @@
 		
 
 			
-		  
-		  	<div class="container mt-3"> 
-		 
-		 		
-					<!-- include notice managemet admin page -->
- 					<%@ include file = "noticeManagementAdmin.jsp" %>
-		  	</div>
+
 
 			<div class="container mt-3">
 				
@@ -147,16 +148,14 @@
 
 		<!-- ContactUsp management -->
 		<div id="contactUsManagement" class="tabcontent border-light">
-		
+
 
 			
 		  
-		  	<div class="container mt-3"> 
+	
 		 
-		 		<!-- include contactUs managemet admin page -->
- 					<%@ include file = "contactUsManagementAdmin.jsp" %>
-					
-		  	</div>
+
+
 
 			<div class="container mt-3">
 			

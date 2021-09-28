@@ -59,7 +59,8 @@
 <h1 style="color:red;font-family:Helvetica, sans-serif; font-size: 100px;">CONTACT US</h1>
 
 <form action="AddContactUsServlet" method="post" 
-style="width:70%;margin-left:10px;"class="border border-secondary needs-validation" novalidate  enctype="multipart/form-data">
+style="width:70%;margin-left:10px;"class="border border-secondary needs-validation" 
+id="addContact" enctype="multipart/form-data">
 <br>
 <h4>What You Want To Know?</h4>
 <div class="input-group mb-3">
@@ -76,39 +77,28 @@ style="width:70%;margin-left:10px;"class="border border-secondary needs-validati
       <option>Registration</option>
       <option>Requirements to be a blood donor</option>
     </select>
-  <div class="invalid-tooltip">
-        Please provide the question type.
-      </div>
 </div>
 <div class="input-group">
   <span class="input-group-text" style="width:150px;">Question</span>
   <textarea class="form-control" name="contactUsQus" aria-label="With textarea" required></textarea>
-      <div class="invalid-tooltip">
-        Please ask your question.
-      </div>
 </div>
 <br>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Name</span>
   <input type="text" class="form-control" name="contactUsName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-  <div class="invalid-tooltip">
-        Please provide your name.
-      </div>
-</div>
+ </div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">E-mail</span>
-  <input type="email" class="form-control" name="contactUsEmail" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-     <div class="invalid-tooltip">
-        Please provide your email address.
-      </div>
-</div>
+  <input type="email" class="form-control" name="contactUsEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" 
+  placeholder="abc@gmail.com"required>
+ </div>
 
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Phone</span>
-  <input type="phone" class="form-control" name="contactUsPhone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-     <div class="invalid-tooltip">
-        Please provide your mobile number.
-      </div>
+  <input type="tel" class="form-control" name="contactUsPhone"
+  pattern="[0-9]{3}-[0-9]{7}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" 
+  placeholder="123-4567890"required>
 </div>
 <br>
  <div class="container bg-light">
@@ -144,25 +134,89 @@ style="width:70%;margin-left:10px;"class="border border-secondary needs-validati
 	
 	</footer>
 	
- <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
+ <!-- jquery script -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+//Add News category
+
+$(document).ready(function (e) {
+	
+	console.log('loadring camp cat edit page..');
+	
+	
+
+	$('#addContact').on("submit", function(evenet) {
+		
+		evenet.preventDefault();
+		
+	
+		let form = new FormData(this);
+		
+		
+		Swal.fire({
+			  title: 'Are you sure?',
+			  text: "Do you want to sumbit this!",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes, Submit the inquiry!'
+			}).then((result) => {
+				
+			  if (result.isConfirmed) {
+		
+					$.ajax({
+						
+						
+						url: "AddContactUsServlet",
+						type: 'POST',
+						data: form,
+						success: function(data, textStatus, jqXHR) {
+							
+							if(data.trim() == "Success"){
+								
+								new swal("Good job!", "Submitted Successfully!", "success")
+								.then((value) => {
+								  window.location="home.jsp"
+								});
+								
+							}else{
+								new swal("Error!", data , "error");
+							}
+							
+							
+						},
+						error: function (jqXHR, textStatus, errorThrown) {
+							new swal("Error!", "Something went wrong !, Try Again..", "error");
+						
+						},
+						processData: false,
+						contentType: false
+						
+						
+					});//ajax end
+			    		    
+			    
+			  }//result confirm end
+				  
+			});//swal confirm end
+					
+		
+	});//submit fun end	
+	
+});//end main
+
+//end of update news category
+
+
 </script>
+
+	
 </body>
 </html>
