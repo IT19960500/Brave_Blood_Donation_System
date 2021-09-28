@@ -71,8 +71,8 @@
 					      <th scope="col">Approved/ Rejected</th>
 					      <th scope="col" style="width:15%;">Action</th>
 
-					      <th scope="col">Approved/Rejected</th>
-					      <th scope="col"style="width: 15%;">Action</th>
+
+					     
 
 					    </tr>
 					  </thead>
@@ -82,7 +82,6 @@
 					  ArrayList<ContactUs> contactUs = ContactUsDao.getAllContactUs();
 					  	
 					  	for(ContactUs contactUs1:contactUs){
-
 					  		%>
 					  		
 							<tr style="font-weight: bold;">
@@ -109,8 +108,10 @@
 										  type="button" ><i class="far fa-trash-alt"></i></a>
 										 
 
+
 										 <a href="#" onclick="getContactUsIDDelete(<%= contactUs1.getContactUsId() %>)" class="btn btn-danger " type="button" ><i class="far fa-trash-alt"></i></a>
 							
+
 
 																		
 					 			     </td>
@@ -170,6 +171,7 @@
       <option>Requirements to be a blood donor</option>
     </select>
 
+
   <div class="invalid-tooltip">
         Please provide the question type.
       </div>
@@ -178,6 +180,7 @@
 <div class="input-group">
   <span class="input-group-text" style="width:150px;">Question</span>
   <textarea class="form-control" name="contactUsQus" id="contactus_qus" value="contactus_qus" aria-label="With textarea" required></textarea>
+
 
       <div class="invalid-tooltip">
         Please ask your question.
@@ -188,6 +191,18 @@
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Name</span>
   <input type="text" class="form-control" name="contactUsName" id="contactus_name" value="contactus_name"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+
+
+  <div class="invalid-tooltip">
+        Please provide your name.
+      </div>
+
+
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">E-mail</span>
+  <input type="email" class="form-control" name="contactUsEmail" id="contactus_email" 
+  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="abc@gmail.com" value="contactus_email"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
 
   <div class="invalid-tooltip">
         Please provide your name.
@@ -206,11 +221,18 @@
 
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Phone</span>
+
   <input type="phone" class="form-control" name="contactUsPhone" id="contactus_phone" value="contactus_phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
 
      <div class="invalid-tooltip">
         Please provide your mobile number.
       </div>
+
+
+  <input type="tel" pattern="[0-9]{3}-[0-9]{7}" placeholder="123-4567890" class="form-control" name="contactUsPhone" id="contactus_phone" value="contactus_phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+
+
+
 
 </div>
 <div class="input-group mb-3">
@@ -427,6 +449,7 @@ function getContactUsIDDelete(contactusid) {
 	
 }//fun end
 </script>
+
 
 
 <script>
