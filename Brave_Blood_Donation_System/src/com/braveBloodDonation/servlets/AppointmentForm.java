@@ -1,19 +1,23 @@
 package com.braveBloodDonation.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.braveBloodDonation.dao.AppointmentFormDao;
-import com.braveBloodDonation.entities.Appointment;
+
 
 
 /**
  * Servlet implementation class Register
  */
+@MultipartConfig
 @WebServlet("/AppointmentForm")
 public class AppointmentForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,17 +42,25 @@ public class AppointmentForm extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		String aname = request.getParameter("aname");
+		
 		String nic = request.getParameter("nic");
+		String name = request.getParameter("name");
 		String bloodgrp = request.getParameter("bloodgrp");
-		String date = request.getParameter("adate");
+		String date = request.getParameter("date");
+		String status = request.getParameter("status");
 		
-		Appointment appointment = new Appointment(aname, nic, bloodgrp, date);
+		PrintWriter out = response.getWriter();
 		
-		AppointmentFormDao rDao = new AppointmentFormDao();
-		String result = rDao.insert(appointment);
-		response.getWriter().print(result);
+		boolean isSuccess = AppointmentFormDao.insertAppointment(nic, name, bloodgrp, date, status);
+		
+if(isSuccess==true) {
+			
+			out.print("done");
+			
+		}else {
+			
+			out.print("error");
+		}
 		
 	}
 }

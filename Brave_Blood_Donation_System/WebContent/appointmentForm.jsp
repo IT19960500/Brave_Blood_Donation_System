@@ -43,16 +43,16 @@
 	
 	<h2 style="text-align: center">Appointment Form</h2>
 
-	<form action="AppointmentForm" method="post">
+	<form id="form-submission"action="AppointmentForm" method="post">
 		<div class="signup form"
 			style="margin-left: 270px; padding-top: 30px; padding-bottom: 30px; margin-top: 80px; margin-bottom: 100px; width: 70%; border: 3px double #bb372d; border-width: thick">
 			<div class="form-group col-md-2" style="margin-left: 250px">
-				<label for="inputAddress">NIC</label> <input type="tel"
-					class="form-control" id="inputPhone" name="nic" placeholder="">
+				<label for="inputAddress">NIC</label> <input type="text"
+					class="form-control" id="nic" pattern="[0-9]{12}" name="nic" placeholder="" required>
 			</div>
 			<div class="form-group col-md-5" style="margin-left: 250px">
 				<label for="inputName">Name</label> <input type="text"
-					class="form-control" id="inputName" name="aname">
+					class="form-control" id="name" name="name" required>
 			</div>
 			<div class="form-row1">
 				<div class="form-group col-md-3" style="margin-left: 250px">
@@ -72,13 +72,16 @@
 				</div>
 				<div class="form-group col-md-3" style="margin-left: 250px">
 					<label for="inputDate">Preffered Date</label> <input type="date"
-						class="form-control" id="inputDate" name="adate" placeholder="">
+						class="form-control" id="inputDate" name="date" placeholder="" required>
 
 				</div>
+					<div class="form-group col-md-5" style="margin-left: 250px">
+				<label for="inputName">Status</label> <input type="text"
+					class="form-control" id="status" name="status" value="Pending" readonly>
+			</div>
 			</div>
 			<div class="button" style="margin-left: 350px; margin-top: 50px">
-				<button type="submit" value="register" class="btn btn-outline-dark">Sign
-					Up</button>
+				<button onclick="msg()" id="btn-submit" type="submit" value="register" class="btn btn-outline-dark">Submit Appointment</button>
 			</div>
 		</div>
 	</form>
@@ -89,19 +92,21 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 		crossorigin="anonymous"></script>
+
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 		crossorigin="anonymous"></script>
+
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
+
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<script type="text/javascript" src="js/editdata.js"></script>
 
 	<script>
 	$(function(){
@@ -120,6 +125,82 @@
     $('#inputDate').attr('min', maxDate);
 });
 	</script>
+	
 
+<script>
+
+//edit appointment
+
+$(document).ready(function (e) {
+	
+	console.log('loading appointment edit page..');
+	
+	
+
+	$('#form-submission').on("submit", function(evenet) {
+		
+		evenet.preventDefault();
+		
+	
+		let form = new FormData(this);
+		
+		
+		Swal.fire({
+			  title: 'Are you sure?',
+			  text: "Do you want to apply as a donor?",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes'
+			}).then((result) => {
+				
+			  if (result.isConfirmed) {
+		
+					$.ajax({
+						
+						
+						url: "AppointmentForm",
+						type: 'POST',
+						data: form,
+						success: function(data, textStatus, jqXHR) {
+							
+							if(data.trim() == "done"){
+								
+								new swal("Good job!", "Update Successfully!", "success")
+								.then((value) => {
+								  window.location="updateDonorProfile.jsp"
+								});
+								
+							}else{
+								new swal("Error!", "NIC already used!", "error");
+							}
+							
+							
+						},
+						error: function (jqXHR, textStatus, errorThrown) {
+							new swal("Error!", "Something went wrong !, Try Again..", "error");
+						
+						},
+						processData: false,
+						contentType: false
+						
+						
+					});//ajax end
+			    		    
+			    
+			  }//result confirm end
+				  
+			});//swal confirm end
+					
+		
+	});//submit fun end	
+	
+});//end main
+
+//end of edit contact us
+	
+
+</script>
 </body>
 </html>

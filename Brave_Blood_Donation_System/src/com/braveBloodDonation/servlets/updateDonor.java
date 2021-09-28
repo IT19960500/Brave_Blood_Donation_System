@@ -4,17 +4,20 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.braveBloodDonation.dao.UpdateDonorDao;
+import com.braveBloodDonation.dao.DonorProfileDao;
+
 
 /**
  * Servlet implementation class UpdateDonor
  */
-@WebServlet("/UpdateDonor")
+@MultipartConfig
+@WebServlet("/updateDonor")
 public class updateDonor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -42,17 +45,17 @@ public class updateDonor extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String username = request.getParameter("updateUsername");
-		String email = request.getParameter("updateEmail");
-		String phone = request.getParameter("updatePhone");
-		String address = request.getParameter("updateAddress");
-		String occupation = request.getParameter("updateOccupation");
-		String weight = request.getParameter("updateWeight");
-		String height = request.getParameter("updateHeight");
+		String username = request.getParameter("donorUsername");
+		String email = request.getParameter("donorEmail");
+		String phone = request.getParameter("donorPhone");
+		String address = request.getParameter("donorAddress");
+		String occupation = request.getParameter("donorOccupation");
+		String weight = request.getParameter("donorWeight");
+		String height = request.getParameter("donorHeight");
 
 		PrintWriter out = response.getWriter();
 
-		boolean isTrue = UpdateDonorDao.update(username, email, phone, address, occupation, weight, height);
+		boolean isTrue = DonorProfileDao.update(username, email, phone, address, occupation, weight, height);
 
 		// update success or not
 		if (isTrue == true) {
