@@ -144,12 +144,14 @@
 </div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">E-mail</span>
-  <input type="email" class="form-control" name="contactUsEmail" id="contactus_email" value="contactus_email"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+  <input type="email" class="form-control" name="contactUsEmail" id="contactus_email" 
+  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="abc@gmail.com" value="contactus_email"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
 </div>
 
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Phone</span>
-  <input type="phone" class="form-control" name="contactUsPhone" id="contactus_phone" value="contactus_phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+  <input type="tel" class="form-control" name="contactUsPhone" id="contactus_phone" 
+  pattern="[0-9]{3}-[0-9]{7}" placeholder="123-4567890"value="contactus_phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
 </div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default" style="width:150px;">Question Status</span>
