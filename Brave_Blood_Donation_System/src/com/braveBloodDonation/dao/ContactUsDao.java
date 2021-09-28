@@ -5,9 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+
+import com.braveBloodDonation.entities.ContactUs;
+
 import java.util.List;
 
 import com.braveBloodDonation.entities.ContactUs;
+
+import com.braveBloodDonation.entities.News;
+
+
 import com.braveBloodDonation.helper.connectionProvider;
 
 public class ContactUsDao {
@@ -191,6 +199,7 @@ public class ContactUsDao {
 			
 		}
 		
+
 		public static List<ContactUs>getSearchNews(int contactUsId){
 			List<ContactUs> list = new ArrayList<>();
 			try {
@@ -234,4 +243,5 @@ public class ContactUsDao {
 			return list;
 		}
 		
+
 }

@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import java.util.List;
+
 
 import com.braveBloodDonation.entities.News;
 import com.braveBloodDonation.helper.connectionProvider;
@@ -219,7 +221,14 @@ public class NewsDao {
 				news.setNewsHeading(rs.getString("newsHeading"));
 				news.setNewsDescription(rs.getString("newsDescription"));
 				news.setNewsPhoto(rs.getString("newsPhoto"));
+
+				news.setNewsArticle(rs.getString("newsArticle"));
+				
+				
+				
+
 				news.setNewsArticle(rs.getString("newsArticle"));	
+
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -228,6 +237,7 @@ public class NewsDao {
 		return news;
 	}
 	
+
 	public static List<News>getSearchNews(String newsAuthorID){
 		List<News> list = new ArrayList<>();
 		try {
@@ -267,5 +277,6 @@ public class NewsDao {
 		}
 		return list;
 	}
+
 	
 }

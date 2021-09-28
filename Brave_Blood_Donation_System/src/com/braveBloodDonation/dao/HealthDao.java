@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import java.util.List;
+
 
 import com.braveBloodDonation.entities.Health;
 import com.braveBloodDonation.helper.connectionProvider;
@@ -224,6 +226,7 @@ public class HealthDao {
 		
 		return health;
 	}
+
 	
 	public static List<Health>getSearchNews(String healthAuthorID){
 		List<Health> list = new ArrayList<>();
@@ -264,5 +267,6 @@ public class HealthDao {
 		}
 		return list;
 	}
+
 
 }

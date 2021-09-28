@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+
+.userTab.container btn-area{
+	background: white;
+	transform: translateY(13px);
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 10px;
+}
+
+.userTab.table-area{
+	background: white;
+	margin-top: 25px;
+}
+
+
+btnExport2{
+	  padding: 15px 32px;
+	  cursor: pointer;
+	 
+}

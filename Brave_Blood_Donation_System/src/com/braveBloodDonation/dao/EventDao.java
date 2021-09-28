@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import java.util.List;
+
 
 import com.braveBloodDonation.entities.Event;
 import com.braveBloodDonation.helper.connectionProvider;
@@ -228,6 +230,10 @@ public class EventDao {
 			return event;
 		}
 		
+
+		
+}
+
 		public static List<Event>getSearchEvent(String eventAuthorID){
 			List<Event> list = new ArrayList<>();
 			try {
@@ -268,4 +274,5 @@ public class EventDao {
 			return list;
 			}
 }
+
 

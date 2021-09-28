@@ -117,7 +117,12 @@
 			</div>
 
 		  
-		
+		  	<div class="container mt-3"> 
+		 
+		 		<p>donation camp management eka methana gahanna</p>
+					
+		  	</div>
+						
 		</div>
 		<!-- //Donation Camp management-->
 
@@ -125,7 +130,7 @@
 
 		<!-- Notice Camp management -->
 		<div id="noticeManagement" class="tabcontent border-light">
-		
+
 
 			
 

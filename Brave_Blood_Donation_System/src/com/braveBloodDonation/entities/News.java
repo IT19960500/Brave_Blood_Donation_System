@@ -13,6 +13,9 @@ public class News {
 	
 	public News() {
 		super();
+
+		// TODO Auto-generated constructor stub
+
 	}
 
 
